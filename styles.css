@@ -1,0 +1,353 @@
+:root {
+    --primary: #5f259f;
+    --primary-light: #e6e0ed;
+    --primary-dark: #4a1c7b;
+    --success: #4CAF50;
+    --success-light: #e8f5e9;
+    --warning: #ff9800;
+    --danger: #f44336;
+    --text-dark: #333;
+    --text-light: #666;
+    --background: #f5f5f5;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: var(--background);
+    color: var(--text-dark);
+    line-height: 1.6;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+h1 {
+    color: var(--primary);
+    text-align: center;
+    margin: 30px 0;
+    font-size: 32px;
+}
+
+h2 {
+    color: var(--primary);
+    text-align: center;
+    margin-bottom: 15px;
+    font-size: 24px;
+}
+
+.welcome-container {
+    max-width: 800px;
+    text-align: center;
+    margin: 20px auto 40px;
+}
+
+.welcome-subheading {
+    color: var(--text-light);
+    margin-bottom: 30px;
+    font-size: 18px;
+}
+
+.tutorial-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 25px;
+    margin: 30px 0;
+    width: 100%;
+}
+
+.tutorial-card {
+    background-color: white;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    transition: transform 0.3s, box-shadow 0.3s;
+    cursor: pointer;
+}
+
+.tutorial-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+}
+
+.card-link {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+}
+
+.card-image {
+    height: 180px;
+    background-color: var(--primary-light);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.app-icon {
+    width: 80px;
+    height: 80px;
+    border-radius: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 36px;
+    color: white;
+}
+
+.card-content {
+    padding: 20px;
+}
+
+.card-title {
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 10px;
+    color: var(--primary);
+}
+
+.card-description {
+    color: var(--text-light);
+    margin-bottom: 15px;
+}
+
+.card-button {
+    display: inline-block;
+    padding: 8px 20px;
+    background-color: var(--primary);
+    color: white;
+    border: none;
+    border-radius: 20px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: background-color 0.3s;
+    cursor: pointer;
+}
+
+.card-button:hover {
+    background-color: var(--primary-dark);
+}
+
+/* Tutorial-specific styles */
+.instructions {
+    background-color: var(--primary-light);
+    border-left: 5px solid var(--primary);
+    padding: 20px;
+    margin-bottom: 20px;
+    border-radius: 5px;
+    max-width: 600px;
+    font-size: 18px;
+}
+
+.phone-container {
+    position: relative;
+    width: 340px;
+    height: 680px;
+    border: 12px solid #333;
+    border-radius: 36px;
+    overflow: hidden;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+    background-color: white;
+    margin-bottom: 30px;
+}
+
+.screen {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #fff;
+    transition: opacity 0.5s ease;
+    overflow: hidden;
+}
+
+.screen.hidden {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.screenshot {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.clickable-area {
+    position: absolute;
+    background-color: rgba(95, 37, 159, 0); /* Transparent initially */
+    border: 2px solid rgba(95, 37, 159, 0); /* Transparent initially */
+    cursor: pointer;
+    z-index: 10;
+    transition: all 0.3s ease;
+}
+
+/* For debug mode - show clickable areas */
+.debug-mode .clickable-area {
+    background-color: rgba(95, 37, 159, 0.2);
+    border: 2px dashed #5f259f;
+}
+
+.clickable-area:hover {
+    background-color: rgba(95, 37, 159, 0.1);
+}
+
+.clickable-area.highlight {
+    animation: pulse 1.5s infinite;
+}
+
+.feedback {
+    position: absolute;
+    background-color: var(--success);
+    color: white;
+    padding: 15px;
+    border-radius: 10px;
+    font-size: 16px;
+    max-width: 250px;
+    text-align: center;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    z-index: 20;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+}
+
+.tutorial-controls {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 30px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+button {
+    padding: 12px 24px;
+    background-color: var(--primary);
+    color: white;
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+    transition: background-color 0.3s;
+}
+
+button:hover {
+    background-color: var(--primary-dark);
+}
+
+button:disabled {
+    background-color: #cccccc;
+    cursor: not-allowed;
+}
+
+.primary-button {
+    background-color: var(--success);
+    font-size: 18px;
+    padding: 15px 40px;
+}
+
+.primary-button:hover {
+    background-color: #3d8b40;
+}
+
+#hint-button {
+    background-color: var(--warning);
+}
+
+#hint-button:hover {
+    background-color: #e68a00;
+}
+
+#debug-toggle {
+    background-color: var(--danger);
+}
+
+#debug-toggle:hover {
+    background-color: #d32f2f;
+}
+
+.progress-indicator {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+    gap: 10px;
+}
+
+.progress-dot {
+    width: 12px;
+    height: 12px;
+    background-color: #ddd;
+    border-radius: 50%;
+    transition: background-color 0.3s;
+}
+
+.progress-dot.active {
+    background-color: var(--primary);
+}
+
+.task-complete {
+    background-color: var(--success-light);
+    border: 1px solid var(--success);
+    color: #2E7D32;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    margin-top: 20px;
+    max-width: 600px;
+    display: none;
+    margin-bottom: 20px;
+}
+
+.back-home {
+    margin-top: 20px;
+    display: inline-block;
+}
+
+@keyframes pulse {
+    0% {
+        box-shadow: 0 0 0 0 rgba(95, 37, 159, 0.7);
+    }
+    70% {
+        box-shadow: 0 0 0 10px rgba(95, 37, 159, 0);
+    }
+    100% {
+        box-shadow: 0 0 0 0 rgba(95, 37, 159, 0);
+    }
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .tutorial-grid {
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    }
+}
+
+@media (max-width: 500px) {
+    .phone-container {
+        width: 300px;
+        height: 600px;
+    }
+    
+    .instructions {
+        font-size: 16px;
+        padding: 15px;
+    }
+    
+    button {
+        padding: 10px 20px;
+        font-size: 14px;
+    }
+}

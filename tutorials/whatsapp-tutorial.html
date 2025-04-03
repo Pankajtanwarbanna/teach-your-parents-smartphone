@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WhatsApp Video Call Tutorial - Teach your parents smartphone</title>
+    <link rel="stylesheet" href="../styles.css">
+</head>
+
+<body>
+    <div class="container">
+        <h1>Making a Video Call on WhatsApp</h1>
+        <div class="progress-indicator">
+            <div class="progress-dot active" data-step="1"></div>
+            <div class="progress-dot" data-step="2"></div>
+            <div class="progress-dot" data-step="3"></div>
+        </div>
+
+        <div class="phone-container" id="phone-container">
+            <!-- Home Screen - Contacts List -->
+            <div class="screen" id="home-screen">
+                <!-- Home screen image - your WhatsApp contacts screen -->
+                <img src="../images/video-call-whatsapp/home.png" alt="WhatsApp Contacts Screen" class="screenshot">
+
+                <!-- Define clickable areas for home screen -->
+                <div class="clickable-area" id="select-contact" 
+                     style="left: 5px; top: 224px; width: 300px; height: 70px;"
+                     data-next-screen="chat-screen">
+                </div>
+
+                <div class="feedback" id="home-feedback" style="left: 50px; top: 400px;">
+                    Great! You've selected a contact to chat with.
+                </div>
+            </div>
+
+            <!-- Chat Screen - Individual chat with video call icon -->
+            <div class="screen hidden" id="chat-screen">
+                <!-- Chat screen image - individual chat with video call icon -->
+                <img src="../images/video-call-whatsapp/chat.png" alt="WhatsApp Chat Screen" class="screenshot">
+
+                <!-- Define clickable areas for chat screen -->
+                <div class="clickable-area" id="back-to-home" 
+                     style="left: 5px; top: 10px; width: 40px; height: 40px;"
+                     data-next-screen="home-screen">
+                </div>
+
+                <div class="clickable-area" id="video-call-button" 
+                     style="right: 60px; top: 10px; width: 40px; height: 40px;"
+                     data-next-screen="call-screen">
+                </div>
+
+                <div class="feedback" id="chat-feedback" style="left: 50px; top: 400px;">
+                    Perfect! You've clicked the video call button. Your call is connecting.
+                </div>
+            </div>
+
+            <!-- Video Call Screen -->
+            <div class="screen hidden" id="call-screen">
+                <!-- Video call screen - created as HTML instead of image for better interactivity -->
+                <div style="width: 100%; height: 100%; background-color: #111; position: relative; overflow: hidden;">
+                    <!-- Remote video -->
+                    <div style="width: 100%; height: 100%; display: flex; align-items: center; justify-content: center;">
+                        <div style="text-align: center; color: white;">
+                            <div style="width: 100px; height: 100px; background-color: #444; border-radius: 50%; margin: 0 auto 20px; display: flex; align-items: center; justify-content: center; font-size: 40px;">
+                                👤
+                            </div>
+                            <p style="font-size: 20px; margin-bottom: 5px;">Random Aunty</p>
+                            <p style="font-size: 14px; opacity: 0.7;">Call connected</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Self preview -->
+                    <div style="position: absolute; top: 20px; right: 20px; width: 80px; height: 120px; background-color: #444; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 20px; color: white;">
+                        You
+                    </div>
+                    
+                    <!-- Call controls -->
+                    <div style="position: absolute; bottom: 40px; left: 0; right: 0; display: flex; justify-content: center; gap: 30px;">
+                        <div style="width: 60px; height: 60px; background-color: #444; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 24px; color: white;">
+                            🔇
+                        </div>
+                        <div class="clickable-area" id="end-call-button" 
+                             style="width: 60px; height: 60px; background-color: #FF3B30; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 24px; color: white;"
+                             data-next-screen="completion-screen">
+                            ✕
+                        </div>
+                        <div style="width: 60px; height: 60px; background-color: #444; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 24px; color: white;">
+                            🔄
+                        </div>
+                    </div>
+                </div>
+
+                <div class="feedback" id="call-feedback" style="left: 50px; top: 200px; z-index: 100;">
+                    You're now on a video call! To end the call, click the red button.
+                </div>
+            </div>
+
+            <!-- Completion Screen (success message) -->
+            <div class="screen hidden" id="completion-screen">
+                <div style="height: 100%; display: flex; flex-direction: column; justify-content: center; align-items: center; background-color: #f5f5f5;">
+                    <div style="width: 100px; height: 100px; background-color: #4CAF50; border-radius: 50%; display: flex; justify-content: center; align-items: center; margin-bottom: 20px;">
+                        <span style="color: white; font-size: 50px;">✓</span>
+                    </div>
+                    <h2 style="color: #075E54; margin-bottom: 10px;">Call Completed!</h2>
+                    <p style="font-size: 18px; color: #666; margin-bottom: 30px; text-align: center;">You've successfully made a WhatsApp video call</p>
+                    <button id="tutorial-reset-button" onclick="resetTutorial()" style="padding: 12px 30px; background-color: #075E54; color: white; border: none; border-radius: 25px; font-size: 16px; cursor: pointer;">Try Again</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="task-complete" id="task-complete">
+            Congratulations! You've successfully learned how to make a video call on WhatsApp.
+            <br><br>
+            <button onclick="window.location.href='/index.html'" class="primary-button">Back to Home</button>
+            <button onclick="resetTutorial()">Try Again</button>
+        </div>
+
+        <div class="tutorial-controls">
+            <button id="prev-button" disabled>Previous Step</button>
+            <button id="hint-button">Show Hint</button>
+            <button id="reset-button">Start Over</button>
+            <button id="debug-toggle">Show Clickable Areas</button>
+        </div>
+    </div>
+
+    <script>
+        // Tutorial state
+        const tutorial = {
+            currentScreen: 'home-screen',
+            currentStep: 1,
+            totalSteps: 3,
+            expectedActions: {
+                'home-screen': 'select-contact',
+                'chat-screen': 'video-call-button',
+                'call-screen': 'end-call-button'
+            }
+        };
+
+        // Get DOM elements
+        const phoneContainer = document.getElementById('phone-container');
+        const prevButton = document.getElementById('prev-button');
+        const hintButton = document.getElementById('hint-button');
+        const resetButton = document.getElementById('reset-button');
+        const debugToggle = document.getElementById('debug-toggle');
+        const taskComplete = document.getElementById('task-complete');
+
+        // Set up event listeners for clickable areas
+        document.querySelectorAll('.clickable-area').forEach(area => {
+            area.addEventListener('click', handleAreaClick);
+        });
+
+        // Set up tutorial control buttons
+        prevButton.addEventListener('click', goToPreviousStep);
+        hintButton.addEventListener('click', showHint);
+        resetButton.addEventListener('click', resetTutorial);
+        debugToggle.addEventListener('click', toggleDebugMode);
+
+        // Update the progress indicator
+        function updateProgress() {
+            document.querySelectorAll('.progress-dot').forEach(dot => {
+                const step = parseInt(dot.dataset.step);
+                if (step === tutorial.currentStep) {
+                    dot.classList.add('active');
+                } else {
+                    dot.classList.remove('active');
+                }
+            });
+        }
+
+        // Handle clicking on interactive areas
+        function handleAreaClick(e) {
+            const clickedId = e.target.id;
+            const currentScreen = tutorial.currentScreen;
+            const expectedAction = tutorial.expectedActions[currentScreen];
+
+            if (clickedId === expectedAction) {
+                // Show success feedback
+                const feedbackId = `${currentScreen.split('-')[0]}-feedback`;
+                const feedback = document.getElementById(feedbackId);
+                if (feedback) {
+                    feedback.style.opacity = '1';
+
+                    // Wait a moment, then proceed to next screen
+                    setTimeout(() => {
+                        const nextScreen = e.target.dataset.nextScreen;
+                        if (nextScreen) {
+                            transitionToScreen(nextScreen);
+
+                            // Update step
+                            if (tutorial.currentStep < tutorial.totalSteps) {
+                                tutorial.currentStep++;
+                                updateProgress();
+                                updateButtonStates();
+                            }
+                        }
+                    }, 1500);
+                }
+            } else {
+                // If it's a back button, allow navigation
+                if (clickedId.includes('back-') && e.target.dataset.nextScreen) {
+                    transitionToScreen(e.target.dataset.nextScreen);
+                    tutorial.currentStep--;
+                    updateProgress();
+                    updateButtonStates();
+                } else {
+                    // Wrong action - provide hint
+                    showHint();
+                }
+            }
+        }
+
+        // Transition to a different screen
+        function transitionToScreen(screenId) {
+            // Hide all screens
+            document.querySelectorAll('.screen').forEach(screen => {
+                screen.classList.add('hidden');
+            });
+
+            // Hide all feedback messages
+            document.querySelectorAll('.feedback').forEach(feedback => {
+                feedback.style.opacity = '0';
+            });
+
+            // Show the target screen
+            document.getElementById(screenId).classList.remove('hidden');
+
+            // Update current screen in tutorial state
+            tutorial.currentScreen = screenId;
+
+            // Remove any highlights
+            document.querySelectorAll('.highlight').forEach(element => {
+                element.classList.remove('highlight');
+            });
+
+            // Show task complete message if reached the final screen
+            if (screenId === 'completion-screen') {
+                setTimeout(() => {
+                    taskComplete.style.display = 'block';
+                }, 1500);
+            } else {
+                taskComplete.style.display = 'none';
+            }
+        }
+
+        // Go to the previous step
+        function goToPreviousStep() {
+            if (tutorial.currentStep > 1) {
+                tutorial.currentStep--;
+
+                // Determine which screen to show based on the step
+                let targetScreen;
+                if (tutorial.currentStep === 1) {
+                    targetScreen = 'home-screen';
+                } else if (tutorial.currentStep === 2) {
+                    targetScreen = 'chat-screen';
+                }
+
+                transitionToScreen(targetScreen);
+                updateProgress();
+                updateButtonStates();
+            }
+        }
+
+        // Show hint by highlighting the correct element
+        function showHint() {
+            const currentScreen = tutorial.currentScreen;
+            const expectedAction = tutorial.expectedActions[currentScreen];
+
+            // Remove any existing highlights
+            document.querySelectorAll('.highlight').forEach(element => {
+                element.classList.remove('highlight');
+            });
+
+            // Add highlight to the expected action
+            const elementToHighlight = document.getElementById(expectedAction);
+            if (elementToHighlight) {
+                elementToHighlight.classList.add('highlight');
+            }
+        }
+
+        // Reset the tutorial to the beginning
+        function resetTutorial() {
+            tutorial.currentScreen = 'home-screen';
+            tutorial.currentStep = 1;
+
+            transitionToScreen('home-screen');
+            updateProgress();
+            updateButtonStates();
+
+            taskComplete.style.display = 'none';
+        }
+
+        // Toggle debug mode to show/hide clickable areas
+        function toggleDebugMode() {
+            phoneContainer.classList.toggle('debug-mode');
+            if (phoneContainer.classList.contains('debug-mode')) {
+                debugToggle.textContent = 'Hide Clickable Areas';
+            } else {
+                debugToggle.textContent = 'Show Clickable Areas';
+            }
+        }
+
+        // Update the state of the navigation buttons
+        function updateButtonStates() {
+            prevButton.disabled = tutorial.currentStep === 1;
+        }
+
+        // Initialize the tutorial
+        function initTutorial() {
+            updateProgress();
+            updateButtonStates();
+        }
+
+        // Start the tutorial when the page loads
+        window.onload = initTutorial;
+    </script>
+</body>
+
+</html>

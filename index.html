@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Teach your parents smartphone - App Learning Made Simple</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* Additional styles to override grid layout */
+        .tutorial-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr); /* Force 2 columns */
+            gap: 25px;
+            margin: 30px 0;
+            width: 100%;
+            max-width: 800px; /* Control maximum width */
+        }
+        
+        /* Make cards more prominent */
+        .tutorial-card {
+            min-height: 320px; /* Ensure consistent height */
+        }
+        
+        /* Responsive adjustment to single column on very small screens */
+        @media (max-width: 600px) {
+            .tutorial-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Teach your parents smartphone</h1>
+        
+        <div class="welcome-container">
+            <p class="welcome-subheading">Learn how to use popular apps with step-by-step tutorials.</p>
+            
+            <div class="tutorial-grid">
+                <!-- Money & Payments -->
+                <div class="tutorial-card">
+                    <a href="tutorials/phonepe-tutorial.html" class="card-link">
+                        <div class="card-image">
+                            <div class="app-icon" style="background-color: #5f259f;">💸</div>
+                        </div>
+                        <div class="card-content">
+                            <div class="card-title">Send Money on PhonePe</div>
+                            <p class="card-description">Learn how to send money to a mobile number using PhonePe app.</p>
+                            <button class="card-button">Start Tutorial</button>
+                        </div>
+                    </a>
+                </div>
+                
+                <!-- Communication -->
+                <div class="tutorial-card">
+                    <a href="tutorials/whatsapp-tutorial.html" class="card-link">
+                        <div class="card-image">
+                            <div class="app-icon" style="background-color: #25D366;">📱</div>
+                        </div>
+                        <div class="card-content">
+                            <div class="card-title">Use WhatsApp Video Call</div>
+                            <p class="card-description">Learn how to make video calls to family and friends.</p>
+                            <button class="card-button" style="background-color: #25D366;">Start Tutorial</button>
+                        </div>
+                    </a>
+                </div>
+                
+                <!-- Bill Payments -->
+                <div class="tutorial-card">
+                    <div class="card-image">
+                        <div class="app-icon" style="background-color: #5f259f;">⚡</div>
+                    </div>
+                    <div class="card-content">
+                        <div class="card-title">Pay Electricity Bill</div>
+                        <p class="card-description">Learn how to pay your electricity bill using PhonePe or BBPS.</p>
+                        <button class="card-button" disabled style="background-color: #ccc;">Coming Soon</button>
+                    </div>
+                </div>
+                
+                <!-- Shopping -->
+                <div class="tutorial-card">
+                    <div class="card-image">
+                        <div class="app-icon" style="background-color: #ff9900;">📦</div>
+                    </div>
+                    <div class="card-content">
+                        <div class="card-title">Shop on Amazon</div>
+                        <p class="card-description">Learn how to order products and track your delivery.</p>
+                        <button class="card-button" disabled style="background-color: #ccc;">Coming Soon</button>
+                    </div>
+                </div>
+                
+                <!-- Health -->
+                <div class="tutorial-card">
+                    <div class="card-image">
+                        <div class="app-icon" style="background-color: #16a085;">💊</div>
+                    </div>
+                    <div class="card-content">
+                        <div class="card-title">Order Medicines</div>
+                        <p class="card-description">Learn how to order medicines on PharmEasy or 1mg.</p>
+                        <button class="card-button" disabled style="background-color: #ccc;">Coming Soon</button>
+                    </div>
+                </div>
+                
+                <!-- Entertainment -->
+                <div class="tutorial-card">
+                    <div class="card-image">
+                        <div class="app-icon" style="background-color: #E50914;">📺</div>
+                    </div>
+                    <div class="card-content">
+                        <div class="card-title">Watch Shows on Hotstar</div>
+                        <p class="card-description">Learn how to watch TV shows and movies on Disney+ Hotstar.</p>
+                        <button class="card-button" disabled style="background-color: #ccc;">Coming Soon</button>
+                    </div>
+                </div>
+                
+                <!-- Digital Documents -->
+                <div class="tutorial-card">
+                    <div class="card-image">
+                        <div class="app-icon" style="background-color: #2980b9;">📄</div>
+                    </div>
+                    <div class="card-content">
+                        <div class="card-title">Use DigiLocker</div>
+                        <p class="card-description">Access your official documents like Aadhar and PAN digitally.</p>
+                        <button class="card-button" disabled style="background-color: #ccc;">Coming Soon</button>
+                    </div>
+                </div>
+                
+                <!-- Transportation -->
+                <div class="tutorial-card">
+                    <div class="card-image">
+                        <div class="app-icon" style="background-color: #0088cc;">🚕</div>
+                    </div>
+                    <div class="card-content">
+                        <div class="card-title">Book an Ola/Uber Ride</div>
+                        <p class="card-description">Learn how to book a cab and track your driver.</p>
+                        <button class="card-button" disabled style="background-color: #ccc;">Coming Soon</button>
+                    </div>
+                </div>
+                
+                <!-- IRCTC -->
+                <div class="tutorial-card">
+                    <div class="card-image">
+                        <div class="app-icon" style="background-color: #0D47A1;">🚂</div>
+                    </div>
+                    <div class="card-content">
+                        <div class="card-title">Book Train Tickets</div>
+                        <p class="card-description">Learn how to book train tickets using the IRCTC app.</p>
+                        <button class="card-button" disabled style="background-color: #ccc;">Coming Soon</button>
+                    </div>
+                </div>
+                
+                <!-- Google Maps -->
+                <div class="tutorial-card">
+                    <div class="card-image">
+                        <div class="app-icon" style="background-color: #4285F4;">🗺️</div>
+                    </div>
+                    <div class="card-content">
+                        <div class="card-title">Navigate with Google Maps</div>
+                        <p class="card-description">Learn how to find directions and navigate to new places.</p>
+                        <button class="card-button" disabled style="background-color: #ccc;">Coming Soon</button>
+                    </div>
+                </div>
+                
+                <!-- Online Darshan -->
+                <div class="tutorial-card">
+                    <div class="card-image">
+                        <div class="app-icon" style="background-color: #FFC107;">🙏</div>
+                    </div>
+                    <div class="card-content">
+                        <div class="card-title">Online Temple Darshan</div>
+                        <p class="card-description">Learn how to watch live darshan from popular temples.</p>
+                        <button class="card-button" disabled style="background-color: #ccc;">Coming Soon</button>
+                    </div>
+                </div>
+                
+                <!-- YouTube -->
+                <div class="tutorial-card">
+                    <div class="card-image">
+                        <div class="app-icon" style="background-color: #FF0000;">▶️</div>
+                    </div>
+                    <div class="card-content">
+                        <div class="card-title">Watch YouTube Videos</div>
+                        <p class="card-description">Learn how to search and watch videos on YouTube.</p>
+                        <button class="card-button" disabled style="background-color: #ccc;">Coming Soon</button>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+</body>
+</html>
