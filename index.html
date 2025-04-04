@@ -49,6 +49,26 @@
             margin: 0 15px;
         }
         
+        /* About link styling */
+        .about-link {
+            display: inline-block;
+            margin: 5px 0 20px;
+            color: #5f259f;
+            text-decoration: none;
+            font-size: 16px;
+            transition: all 0.2s ease;
+        }
+        
+        .about-link:hover {
+            text-decoration: underline;
+            opacity: 0.9;
+        }
+        
+        .about-link svg {
+            margin-right: 5px;
+            vertical-align: middle;
+        }
+        
         /* Responsive adjustment to single column on very small screens */
         @media (max-width: 600px) {
             .tutorial-grid {
@@ -61,8 +81,18 @@
     <div class="container">
         <h1>Teach your parents smartphone</h1>
         
+        <!-- New About link below heading -->
+        <a href="about.html" class="about-link">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="10"></circle>
+                <line x1="12" y1="16" x2="12" y2="12"></line>
+                <line x1="12" y1="8" x2="12.01" y2="8"></line>
+            </svg>
+            Learn about the story behind this project
+        </a>
+        
         <div class="welcome-container">
-            <p class="welcome-subheading">Learn how to use popular apps with step-by-step tutorials.</p>
+            <p class="welcome-subheading">Learn how to use popular apps with step-by-step practice guide.</p>
             
             <div class="tutorial-grid">
                 <!-- Money & Payments -->
@@ -105,54 +135,6 @@
                     </div>
                 </div>
                 
-                <!-- Shopping -->
-                <div class="tutorial-card">
-                    <div class="card-image">
-                        <div class="app-icon" style="background-color: #ff9900;">📦</div>
-                    </div>
-                    <div class="card-content">
-                        <div class="card-title">Shop on Amazon</div>
-                        <p class="card-description">Learn how to order products and track your delivery.</p>
-                        <button class="card-button" disabled style="background-color: #ccc;">Coming Soon</button>
-                    </div>
-                </div>
-                
-                <!-- Health -->
-                <div class="tutorial-card">
-                    <div class="card-image">
-                        <div class="app-icon" style="background-color: #16a085;">💊</div>
-                    </div>
-                    <div class="card-content">
-                        <div class="card-title">Order Medicines</div>
-                        <p class="card-description">Learn how to order medicines on PharmEasy or 1mg.</p>
-                        <button class="card-button" disabled style="background-color: #ccc;">Coming Soon</button>
-                    </div>
-                </div>
-                
-                <!-- Entertainment -->
-                <div class="tutorial-card">
-                    <div class="card-image">
-                        <div class="app-icon" style="background-color: #E50914;">📺</div>
-                    </div>
-                    <div class="card-content">
-                        <div class="card-title">Watch Shows on Hotstar</div>
-                        <p class="card-description">Learn how to watch TV shows and movies on Disney+ Hotstar.</p>
-                        <button class="card-button" disabled style="background-color: #ccc;">Coming Soon</button>
-                    </div>
-                </div>
-                
-                <!-- Digital Documents -->
-                <div class="tutorial-card">
-                    <div class="card-image">
-                        <div class="app-icon" style="background-color: #2980b9;">📄</div>
-                    </div>
-                    <div class="card-content">
-                        <div class="card-title">Use DigiLocker</div>
-                        <p class="card-description">Access your official documents like Aadhar and PAN digitally.</p>
-                        <button class="card-button" disabled style="background-color: #ccc;">Coming Soon</button>
-                    </div>
-                </div>
-                
                 <!-- Transportation -->
                 <div class="tutorial-card">
                     <div class="card-image">
@@ -165,18 +147,6 @@
                     </div>
                 </div>
                 
-                <!-- IRCTC -->
-                <div class="tutorial-card">
-                    <div class="card-image">
-                        <div class="app-icon" style="background-color: #0D47A1;">🚂</div>
-                    </div>
-                    <div class="card-content">
-                        <div class="card-title">Book Train Tickets</div>
-                        <p class="card-description">Learn how to book train tickets using the IRCTC app.</p>
-                        <button class="card-button" disabled style="background-color: #ccc;">Coming Soon</button>
-                    </div>
-                </div>
-                
                 <!-- Google Maps -->
                 <div class="tutorial-card">
                     <div class="card-image">
@@ -185,6 +155,18 @@
                     <div class="card-content">
                         <div class="card-title">Navigate with Google Maps</div>
                         <p class="card-description">Learn how to find directions and navigate to new places.</p>
+                        <button class="card-button" disabled style="background-color: #ccc;">Coming Soon</button>
+                    </div>
+                </div>
+       
+                <!-- IRCTC -->
+                <div class="tutorial-card">
+                    <div class="card-image">
+                        <div class="app-icon" style="background-color: #0D47A1;">🚂</div>
+                    </div>
+                    <div class="card-content">
+                        <div class="card-title">Book Train Tickets</div>
+                        <p class="card-description">Learn how to book train tickets using the IRCTC app.</p>
                         <button class="card-button" disabled style="background-color: #ccc;">Coming Soon</button>
                     </div>
                 </div>
