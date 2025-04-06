@@ -4,17 +4,21 @@ A simple application with step-by-step tutorials to help parents learn essential
 
 ## Why I Created This
 
-When [PhonePe](https://www.phonepe.com/) updated their design, I noticed how challenging it was for my parents to adapt. They actually thought I had broken their phone! I spent two hours patiently teaching them the new interface step by step.
+I recently visited my parents. Everything was fine until one morning my mom started blaming me for "doing something" to their phone. [PhonePe](https://www.phonepe.com/) had updated its design overnight, and both of them were confused. I spent an hour patiently teaching them the new interface step by step. That trip, I also ended up showing them how to make a video call on WhatsApp.
 
-I've seen my friends face the same problem with their parents too. We all spend time teaching them, but they often forget without practice.
+After I returned to Bangalore, it hit me: I won’t always be around to sit next to them and help. And honestly, explaining things over a phone call never really works. It wasn’t just them. I’ve seen this happen with my friends’ parents too. We teach them, but since they don’t get to practice, they forget and then feel frustrated or even embarrassed to ask again. 
 
-That's why I built this tool - so parents can practice on their own after I teach them personally. The tutorials can be watched as many times as needed, without anyone rushing or judging them. It's also helpful for learning existing features they don't know about. I created this because I want to help my parents feel more confident using their phones while saving everyone time. Simple practice makes learning new technology much easier.
+That’s when I decided to build this tool.
+
+It's simple. It lets my parents (or anyone, really), practice using apps like PhonePe, WhatsApp through step-by-step tutorials on their own. It can be practiced as many times as needed, without anyone rushing or judging them. Whether it’s a complex flow or a basic feature, they can revisit it anytime. It’s even helpful for me. I can teach them features they’ve never used before, like downloading bank statements, sending a voice note or adjust WhatsApp settings, from miles away.
+
+I built this so my parents can feel a little more confident, a little more independent, and a little less scared of technology. Because sometimes, all they need is a safe space to practice.
 
 ## Features
 
 - Simple, clear step-by-step instructions
 - Visual guides with highlighted clickable areas
-- Practice mode with no real consequences
+- Interactive Practice mode
 - Works for various essential apps (PhonePe, WhatsApp, etc.)
 
 ## How To Use

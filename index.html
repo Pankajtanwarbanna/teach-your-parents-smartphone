@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,18 +10,21 @@
         /* Additional styles to override grid layout */
         .tutorial-grid {
             display: grid;
-            grid-template-columns: repeat(2, 1fr); /* Force 2 columns */
+            grid-template-columns: repeat(2, 1fr);
+            /* Force 2 columns */
             gap: 25px;
             margin: 30px 0;
             width: 100%;
-            max-width: 800px; /* Control maximum width */
+            max-width: 800px;
+            /* Control maximum width */
         }
-        
+
         /* Make cards more prominent */
         .tutorial-card {
-            min-height: 320px; /* Ensure consistent height */
+            min-height: 320px;
+            /* Ensure consistent height */
         }
-        
+
         /* Footer styling */
         .footer {
             margin-top: 50px;
@@ -30,25 +34,25 @@
             font-size: 14px;
             color: #666;
         }
-        
+
         .footer a {
             color: #5f259f;
             text-decoration: none;
             font-weight: bold;
         }
-        
+
         .footer a:hover {
             text-decoration: underline;
         }
-        
+
         .nav-links {
             margin-top: 20px;
         }
-        
+
         .nav-links a {
             margin: 0 15px;
         }
-        
+
         /* About link styling */
         .about-link {
             display: inline-block;
@@ -58,17 +62,17 @@
             font-size: 16px;
             transition: all 0.2s ease;
         }
-        
+
         .about-link:hover {
             text-decoration: underline;
             opacity: 0.9;
         }
-        
+
         .about-link svg {
             margin-right: 5px;
             vertical-align: middle;
         }
-        
+
         /* Responsive adjustment to single column on very small screens */
         @media (max-width: 600px) {
             .tutorial-grid {
@@ -77,23 +81,23 @@
         }
     </style>
 </head>
+
 <body>
     <div class="container">
         <h1>Teach your parents smartphone</h1>
-        
-        <!-- New About link below heading -->
+
+        <!-- New About link with angled arrow -->
         <a href="about.html" class="about-link">
-            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <circle cx="12" cy="12" r="10"></circle>
-                <line x1="12" y1="16" x2="12" y2="12"></line>
-                <line x1="12" y1="8" x2="12.01" y2="8"></line>
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M7 17l9.2-9.2M7 7h10v10"></path>
             </svg>
-            Learn about the story behind this project
+            Why I built this
         </a>
-        
+
         <div class="welcome-container">
             <p class="welcome-subheading">Learn how to use popular apps with step-by-step practice guide.</p>
-            
+
             <div class="tutorial-grid">
                 <!-- Money & Payments -->
                 <div class="tutorial-card">
@@ -103,12 +107,13 @@
                         </div>
                         <div class="card-content">
                             <div class="card-title">Send Money on PhonePe</div>
-                            <p class="card-description">Learn how to send money to a mobile number using PhonePe app.</p>
+                            <p class="card-description">Learn how to send money to a mobile number using PhonePe app.
+                            </p>
                             <button class="card-button">Start Tutorial</button>
                         </div>
                     </a>
                 </div>
-                
+
                 <!-- Communication -->
                 <div class="tutorial-card">
                     <a href="tutorials/whatsapp-tutorial.html" class="card-link">
@@ -122,7 +127,7 @@
                         </div>
                     </a>
                 </div>
-                
+
                 <!-- Bill Payments -->
                 <div class="tutorial-card">
                     <div class="card-image">
@@ -134,7 +139,7 @@
                         <button class="card-button" disabled style="background-color: #ccc;">Coming Soon</button>
                     </div>
                 </div>
-                
+
                 <!-- Transportation -->
                 <div class="tutorial-card">
                     <div class="card-image">
@@ -146,7 +151,7 @@
                         <button class="card-button" disabled style="background-color: #ccc;">Coming Soon</button>
                     </div>
                 </div>
-                
+
                 <!-- Google Maps -->
                 <div class="tutorial-card">
                     <div class="card-image">
@@ -158,7 +163,7 @@
                         <button class="card-button" disabled style="background-color: #ccc;">Coming Soon</button>
                     </div>
                 </div>
-       
+
                 <!-- IRCTC -->
                 <div class="tutorial-card">
                     <div class="card-image">
@@ -172,7 +177,7 @@
                 </div>
             </div>
         </div>
-        
+
         <footer class="footer">
             <div>
                 Built with ❤️ by <a href="https://twitter.com/the2ndfloorguy" target="_blank">Pankaj Tanwar</a>
@@ -184,4 +189,5 @@
         </footer>
     </div>
 </body>
+
 </html>
