@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>WhatsApp Video Call Tutorial - Teach your parents how to make video calls</title>
+    <title>WhatsApp Video Call Tutorial - Teach your parents smartphone</title>
     <link rel="stylesheet" href="../styles.css">
     <style>
         .clickable-area {
@@ -23,7 +23,7 @@
         
         #select-contact {
             left: 1.5%;
-            top: 34%;
+            top: 35%;
             width: 97%;
             height: 11%;
         }
@@ -44,6 +44,22 @@
         
         #end-call-button {
             position: relative !important;
+        }
+        
+        .step-instructions {
+            background-color: #e7f7e8;
+            border-left: 5px solid #25D366;
+            padding: 15px;
+            margin-bottom: 20px;
+            border-radius: 5px;
+            max-width: 600px;
+            width: 100%;
+            font-size: 16px;
+            line-height: 1.5;
+        }
+        
+        .step-instructions strong {
+            color: #075E54;
         }
         
         /* Make feedback messages responsive */
@@ -212,6 +228,11 @@
             <div class="progress-dot" data-step="2"></div>
             <div class="progress-dot" data-step="3"></div>
         </div>
+        
+        <!-- Step instructions will be updated dynamically -->
+        <div class="step-instructions" id="step-instructions">
+            <strong>Step 1:</strong> This is your WhatsApp chats list. All your conversations appear here. To make a video call, first tap on the contact you want to call. In this example, tap on "Random Aunty".
+        </div>
 
         <div class="phone-container" id="phone-container">
             <!-- Home Screen - Contacts List -->
@@ -223,7 +244,7 @@
                 <div class="clickable-area" id="select-contact" data-next-screen="chat-screen"></div>
 
                 <div class="feedback" id="home-feedback">
-                    Great! You've selected a contact to chat with.
+                    Good job! Now you'll see the chat screen for this contact.
                 </div>
             </div>
 
@@ -266,7 +287,7 @@
                 </div>
 
                 <div class="feedback" id="call-feedback">
-                    You're now on a video call! To end the call, click the red button.
+                    Well done! You've ended the call by pressing the red button.
                 </div>
             </div>
 
@@ -308,11 +329,17 @@
                 'home-screen': 'select-contact',
                 'chat-screen': 'video-call-button',
                 'call-screen': 'end-call-button'
+            },
+            instructions: {
+                1: "<strong>Step 1:</strong> This is your WhatsApp chats list. All your conversations appear here. To make a video call, first tap on the contact you want to call. In this example, tap on \"Random Aunty\".",
+                2: "<strong>Step 2:</strong> Now you're in the chat screen where you can see your messages with this contact. Look at the top right corner of the screen. Tap on the video camera icon to start a video call.",
+                3: "<strong>Step 3:</strong> Your video call is now connected! You can see the other person in the main screen and yourself in the small window at the top right. When you want to end the call, tap the red button with an X in the middle at the bottom of the screen."
             }
         };
 
         // Get DOM elements
         const phoneContainer = document.getElementById('phone-container');
+        const instructionsElement = document.getElementById('step-instructions');
         const prevButton = document.getElementById('prev-button');
         const hintButton = document.getElementById('hint-button');
         const resetButton = document.getElementById('reset-button');
@@ -329,6 +356,11 @@
         hintButton.addEventListener('click', showHint);
         resetButton.addEventListener('click', resetTutorial);
         debugToggle.addEventListener('click', toggleDebugMode);
+        
+        // Update instructions text
+        function updateInstructions() {
+            instructionsElement.innerHTML = tutorial.instructions[tutorial.currentStep];
+        }
 
         // Update the progress indicator
         function updateProgress() {
@@ -365,6 +397,7 @@
                             if (tutorial.currentStep < tutorial.totalSteps) {
                                 tutorial.currentStep++;
                                 updateProgress();
+                                updateInstructions();
                                 updateButtonStates();
                             }
                         }
@@ -376,6 +409,7 @@
                     transitionToScreen(e.target.dataset.nextScreen);
                     tutorial.currentStep--;
                     updateProgress();
+                    updateInstructions();
                     updateButtonStates();
                 } else {
                     // Wrong action - provide hint
@@ -432,6 +466,7 @@
 
                 transitionToScreen(targetScreen);
                 updateProgress();
+                updateInstructions();
                 updateButtonStates();
             }
         }
@@ -450,6 +485,9 @@
             const elementToHighlight = document.getElementById(expectedAction);
             if (elementToHighlight) {
                 elementToHighlight.classList.add('highlight');
+                
+                // Make the instruction more prominent as a hint
+                instructionsElement.innerHTML = "<strong>HINT:</strong> " + tutorial.instructions[tutorial.currentStep];
             }
         }
 
@@ -460,6 +498,7 @@
 
             transitionToScreen('home-screen');
             updateProgress();
+            updateInstructions();
             updateButtonStates();
 
             taskComplete.style.display = 'none';
@@ -483,6 +522,7 @@
         // Initialize the tutorial
         function initTutorial() {
             updateProgress();
+            updateInstructions();
             updateButtonStates();
         }
 

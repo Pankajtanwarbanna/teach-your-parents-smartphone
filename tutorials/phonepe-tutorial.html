@@ -111,12 +111,34 @@
         #pay-feedback {
             top: 50%;
         }
+        
+        .step-instructions {
+            background-color: #f8f0ff;
+            border-left: 5px solid #5f259f;
+            padding: 15px;
+            margin-bottom: 20px;
+            border-radius: 5px;
+            max-width: 600px;
+            width: 100%;
+            font-size: 16px;
+            line-height: 1.5;
+        }
+        
+        .step-instructions strong {
+            color: #5f259f;
+        }
     </style>
 </head>
 
 <body>
     <div class="container">
         <h1>Sending Money on PhonePe</h1>
+        
+        <!-- Step instructions section -->
+        <div class="step-instructions" id="step-instructions">
+            <strong>Step 1:</strong> This is the PhonePe home screen. To send money to someone, tap on the "To mobile number" option under Money Transfers. This lets you send money to any phone number in India.
+        </div>
+        
         <div class="progress-indicator">
             <div class="progress-dot active" data-step="1"></div>
             <div class="progress-dot" data-step="2"></div>
@@ -249,12 +271,19 @@
                 'searchcontact-screen': 'tap-to-select',
                 'pay-screen': 'pay',
                 'amount-screen': 'send-again-button'
+            },
+            instructions: {
+                1: "<strong>Step 1:</strong> This is the PhonePe home screen. To send money to someone, tap on the \"To mobile number\" option under Money Transfers. This lets you send money to any phone number in India.",
+                2: "<strong>Step 2:</strong> You're now in the Send Money screen. Here you can see your recent payments. To make a new payment, tap on the purple \"New Payment\" button at the bottom of your screen.",
+                3: "<strong>Step 3:</strong> Now you can select a contact. Tap on the search box at the top to enter a phone number or search for a contact.",
+                4: "<strong>Step 4:</strong> Type the phone number or select a contact from the list. Tap on the contact you want to send money to.",
+                5: "<strong>Step 5:</strong> Now enter the amount you want to send. Then tap \"Pay\" to proceed. After this, you'll need to enter your UPI PIN to complete the transaction."
             }
         };
 
         // Get DOM elements
         const phoneContainer = document.getElementById('phone-container');
-        const instructionText = document.getElementById('instruction-text');
+        const instructionsElement = document.getElementById('step-instructions');
         const prevButton = document.getElementById('prev-button');
         const hintButton = document.getElementById('hint-button');
         const resetButton = document.getElementById('reset-button');
@@ -271,6 +300,10 @@
         hintButton.addEventListener('click', showHint);
         resetButton.addEventListener('click', resetTutorial);
         debugToggle.addEventListener('click', toggleDebugMode);
+        
+        function updateInstructions() {
+            instructionsElement.innerHTML = tutorial.instructions[tutorial.currentStep];
+        }
 
         // Update the progress indicator
         function updateProgress() {
@@ -307,6 +340,7 @@
                             if (tutorial.currentStep < tutorial.totalSteps) {
                                 tutorial.currentStep++;
                                 updateProgress();
+                                updateInstructions();
                                 updateButtonStates();
                             }
                         }
@@ -318,6 +352,7 @@
                     transitionToScreen(e.target.dataset.nextScreen);
                     tutorial.currentStep--;
                     updateProgress();
+                    updateInstructions();
                     updateButtonStates();
                 } else {
                     // Wrong action - provide hint
@@ -378,6 +413,7 @@
 
                 transitionToScreen(targetScreen);
                 updateProgress();
+                updateInstructions();
                 updateButtonStates();
             }
         }
@@ -396,6 +432,9 @@
             const elementToHighlight = document.getElementById(expectedAction);
             if (elementToHighlight) {
                 elementToHighlight.classList.add('highlight');
+                
+                // Make the instruction more prominent as a hint
+                instructionsElement.innerHTML = "<strong>HINT:</strong> " + tutorial.instructions[tutorial.currentStep];
             }
         }
 
@@ -406,6 +445,7 @@
 
             transitionToScreen('home-screen');
             updateProgress();
+            updateInstructions();
             updateButtonStates();
 
             taskComplete.style.display = 'none';
@@ -429,6 +469,7 @@
         // Initialize the tutorial
         function initTutorial() {
             updateProgress();
+            updateInstructions();
             updateButtonStates();
         }
 
