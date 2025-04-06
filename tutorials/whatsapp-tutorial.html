@@ -4,8 +4,204 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>WhatsApp Video Call Tutorial - Teach your parents smartphone</title>
+    <title>WhatsApp Video Call Tutorial - Teach your parents how to make video calls</title>
     <link rel="stylesheet" href="../styles.css">
+    <style>
+        .clickable-area {
+            position: absolute;
+            background-color: rgba(95, 37, 159, 0); /* Transparent initially */
+            border: 2px solid rgba(95, 37, 159, 0); /* Transparent initially */
+            cursor: pointer;
+            z-index: 10;
+            transition: all 0.3s ease;
+        }
+        
+        .debug-mode .clickable-area {
+            background-color: rgba(95, 37, 159, 0.2);
+            border: 2px dashed #5f259f;
+        }
+        
+        #select-contact {
+            left: 1.5%;
+            top: 34%;
+            width: 97%;
+            height: 11%;
+        }
+        
+        #back-to-home {
+            left: 1.5%;
+            top: 1.5%;
+            width: 12.5%;
+            height: 6.25%;
+        }
+        
+        #video-call-button {
+            right: 18.75%;  /* 60px / 320px */
+            top: 1.5%;
+            width: 12.5%;
+            height: 6.25%;
+        }
+        
+        #end-call-button {
+            position: relative !important;
+        }
+        
+        /* Make feedback messages responsive */
+        .feedback {
+            position: absolute;
+            background-color: var(--success);
+            color: white;
+            padding: 5%;
+            border-radius: 10px;
+            font-size: 16px;
+            width: 70%;
+            left: 15%; /* Center horizontally */
+            text-align: center;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+            z-index: 20;
+            opacity: 0;
+            transition: opacity 0.5s ease;
+        }
+        
+        #home-feedback {
+            top: 60%;
+        }
+        
+        #chat-feedback {
+            top: 60%;
+        }
+        
+        #call-feedback {
+            top: 30%;
+            z-index: 100;
+        }
+        
+        .call-container {
+            width: 100%;
+            height: 100%;
+            background-color: #111;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .remote-video {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .remote-user {
+            text-align: center;
+            color: white;
+        }
+        
+        .avatar {
+            width: 100px;
+            height: 100px;
+            background-color: #444;
+            border-radius: 50%;
+            margin: 0 auto 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 40px;
+        }
+        
+        .self-preview {
+            position: absolute;
+            top: 5%;
+            right: 5%;
+            width: 25%;
+            height: 25%;
+            background-color: #444;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            color: white;
+        }
+        
+        .call-controls {
+            position: absolute;
+            bottom: 10%;
+            left: 0;
+            right: 0;
+            display: flex;
+            justify-content: center;
+            gap: 10%;
+        }
+        
+        .control-button {
+            width: 60px;
+            height: 60px;
+            background-color: #444;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            color: white;
+        }
+        
+        .end-call {
+            background-color: #FF3B30;
+        }
+        
+        .completion-container {
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background-color: #f5f5f5;
+        }
+        
+        .success-icon {
+            width: 100px;
+            height: 100px;
+            background-color: #4CAF50;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        
+        .success-check {
+            color: white;
+            font-size: 50px;
+        }
+        
+        .completion-title {
+            color: #075E54;
+            margin-bottom: 10px;
+        }
+        
+        .completion-message {
+            font-size: 18px;
+            color: #666;
+            margin-bottom: 30px;
+            text-align: center;
+            padding: 0 20px;
+        }
+        
+        .try-again-button {
+            padding: 12px 30px;
+            background-color: #075E54;
+            color: white;
+            border: none;
+            border-radius: 25px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        
+        .try-again-button:hover {
+            background-color: #064a42;
+        }
+    </style>
 </head>
 
 <body>
@@ -23,13 +219,10 @@
                 <!-- Home screen image - your WhatsApp contacts screen -->
                 <img src="../images/video-call-whatsapp/home.png" alt="WhatsApp Contacts Screen" class="screenshot">
 
-                <!-- Define clickable areas for home screen -->
-                <div class="clickable-area" id="select-contact" 
-                     style="left: 5px; top: 224px; width: 300px; height: 70px;"
-                     data-next-screen="chat-screen">
-                </div>
+                <!-- Define clickable areas for home screen with responsive positioning -->
+                <div class="clickable-area" id="select-contact" data-next-screen="chat-screen"></div>
 
-                <div class="feedback" id="home-feedback" style="left: 50px; top: 400px;">
+                <div class="feedback" id="home-feedback">
                     Great! You've selected a contact to chat with.
                 </div>
             </div>
@@ -39,72 +232,53 @@
                 <!-- Chat screen image - individual chat with video call icon -->
                 <img src="../images/video-call-whatsapp/chat.png" alt="WhatsApp Chat Screen" class="screenshot">
 
-                <!-- Define clickable areas for chat screen -->
-                <div class="clickable-area" id="back-to-home" 
-                     style="left: 5px; top: 10px; width: 40px; height: 40px;"
-                     data-next-screen="home-screen">
-                </div>
+                <!-- Define clickable areas with responsive positioning -->
+                <div class="clickable-area" id="back-to-home" data-next-screen="home-screen"></div>
+                <div class="clickable-area" id="video-call-button" data-next-screen="call-screen"></div>
 
-                <div class="clickable-area" id="video-call-button" 
-                     style="right: 60px; top: 10px; width: 40px; height: 40px;"
-                     data-next-screen="call-screen">
-                </div>
-
-                <div class="feedback" id="chat-feedback" style="left: 50px; top: 400px;">
+                <div class="feedback" id="chat-feedback">
                     Perfect! You've clicked the video call button. Your call is connecting.
                 </div>
             </div>
 
             <!-- Video Call Screen -->
             <div class="screen hidden" id="call-screen">
-                <!-- Video call screen - created as HTML instead of image for better interactivity -->
-                <div style="width: 100%; height: 100%; background-color: #111; position: relative; overflow: hidden;">
+                <!-- Video call screen with better responsive styling -->
+                <div class="call-container">
                     <!-- Remote video -->
-                    <div style="width: 100%; height: 100%; display: flex; align-items: center; justify-content: center;">
-                        <div style="text-align: center; color: white;">
-                            <div style="width: 100px; height: 100px; background-color: #444; border-radius: 50%; margin: 0 auto 20px; display: flex; align-items: center; justify-content: center; font-size: 40px;">
-                                👤
-                            </div>
+                    <div class="remote-video">
+                        <div class="remote-user">
+                            <div class="avatar">👤</div>
                             <p style="font-size: 20px; margin-bottom: 5px;">Random Aunty</p>
                             <p style="font-size: 14px; opacity: 0.7;">Call connected</p>
                         </div>
                     </div>
                     
                     <!-- Self preview -->
-                    <div style="position: absolute; top: 20px; right: 20px; width: 80px; height: 120px; background-color: #444; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 20px; color: white;">
-                        You
-                    </div>
+                    <div class="self-preview">You</div>
                     
                     <!-- Call controls -->
-                    <div style="position: absolute; bottom: 40px; left: 0; right: 0; display: flex; justify-content: center; gap: 30px;">
-                        <div style="width: 60px; height: 60px; background-color: #444; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 24px; color: white;">
-                            🔇
-                        </div>
-                        <div class="clickable-area" id="end-call-button" 
-                             style="width: 60px; height: 60px; background-color: #FF3B30; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 24px; color: white;"
-                             data-next-screen="completion-screen">
-                            ✕
-                        </div>
-                        <div style="width: 60px; height: 60px; background-color: #444; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 24px; color: white;">
-                            🔄
-                        </div>
+                    <div class="call-controls">
+                        <div class="control-button">🔇</div>
+                        <div class="control-button end-call clickable-area" id="end-call-button" data-next-screen="completion-screen">✕</div>
+                        <div class="control-button">🔄</div>
                     </div>
                 </div>
 
-                <div class="feedback" id="call-feedback" style="left: 50px; top: 200px; z-index: 100;">
+                <div class="feedback" id="call-feedback">
                     You're now on a video call! To end the call, click the red button.
                 </div>
             </div>
 
             <!-- Completion Screen (success message) -->
             <div class="screen hidden" id="completion-screen">
-                <div style="height: 100%; display: flex; flex-direction: column; justify-content: center; align-items: center; background-color: #f5f5f5;">
-                    <div style="width: 100px; height: 100px; background-color: #4CAF50; border-radius: 50%; display: flex; justify-content: center; align-items: center; margin-bottom: 20px;">
-                        <span style="color: white; font-size: 50px;">✓</span>
+                <div class="completion-container">
+                    <div class="success-icon">
+                        <span class="success-check">✓</span>
                     </div>
-                    <h2 style="color: #075E54; margin-bottom: 10px;">Call Completed!</h2>
-                    <p style="font-size: 18px; color: #666; margin-bottom: 30px; text-align: center;">You've successfully made a WhatsApp video call</p>
-                    <button id="tutorial-reset-button" onclick="resetTutorial()" style="padding: 12px 30px; background-color: #075E54; color: white; border: none; border-radius: 25px; font-size: 16px; cursor: pointer;">Try Again</button>
+                    <h2 class="completion-title">Call Completed!</h2>
+                    <p class="completion-message">You've successfully made a WhatsApp video call</p>
+                    <button class="try-again-button" onclick="resetTutorial()">Try Again</button>
                 </div>
             </div>
         </div>

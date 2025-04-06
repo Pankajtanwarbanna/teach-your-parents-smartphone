@@ -6,6 +6,112 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PhonePe Money Transfer Tutorial - Teach your parents smartphone</title>
     <link rel="stylesheet" href="../styles.css">
+    <style>
+        .clickable-area {
+            position: absolute;
+            background-color: rgba(95, 37, 159, 0); /* Transparent initially */
+            border: 2px solid rgba(95, 37, 159, 0); /* Transparent initially */
+            cursor: pointer;
+            z-index: 10;
+            transition: all 0.3s ease;
+        }
+        
+        .debug-mode .clickable-area {
+            background-color: rgba(95, 37, 159, 0.2);
+            border: 2px dashed #5f259f;
+        }
+        
+        #to-mobile-button {
+            top: 31%;   /* Approximately 199px / 640px */
+            width: 39%;  /* Approximately 126px / 320px */
+            height: 15.6%;  /* Approximately 100px / 640px */
+        }
+        
+        #back-to-home {
+            left: 1.5%;
+            top: 1.5%;
+            width: 12.5%;
+            height: 6.25%;
+        }
+        
+        #new-payment {
+            left: 56%;
+            top: 89%;
+            width: 43%;
+            height: 9.4%;
+        }
+        
+        #back-to-sendmoney {
+            left: 1.5%;
+            top: 1.5%;
+            width: 12.5%;
+            height: 6.25%;
+        }
+        
+        #search-contact {
+            left: 1.5%;
+            top: 7.8%;
+            width: 97%;
+            height: 9.4%;
+        }
+        
+        #tap-to-select {
+            left: 1.5%;
+            top: 12.6%;
+            width: 97%;
+            height: 9.4%;
+        }
+        
+        #searchcontact-button {
+            left: 1.5%;
+            top: 1.5%;
+            width: 12.5%;
+            height: 6.25%;
+        }
+        
+        #pay {
+            left: 78%;
+            top: 60%;
+            width: 20%;
+            height: 9.4%;
+        }
+        
+        .feedback {
+            position: absolute;
+            background-color: var(--success);
+            color: white;
+            padding: 5%;
+            border-radius: 10px;
+            font-size: 16px;
+            width: 70%;
+            left: 15%; /* Center horizontally */
+            text-align: center;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+            z-index: 20;
+            opacity: 0;
+            transition: opacity 0.5s ease;
+        }
+        
+        #home-feedback {
+            top: 50%;
+        }
+        
+        #sendmoney-feedback {
+            top: 50%;
+        }
+        
+        #selectcontact-feedback {
+            top: 50%;
+        }
+        
+        #searchcontact-feedback {
+            top: 50%;
+        }
+        
+        #pay-feedback {
+            top: 50%;
+        }
+    </style>
 </head>
 
 <body>
@@ -25,12 +131,11 @@
                 <!-- Home screen image -->
                 <img src="../images/send-money-phonepe/home.png" alt="PhonePe Home Screen" class="screenshot">
 
-                <!-- Define clickable areas for home screen -->
-                <div class="clickable-area" id="to-mobile-button" style="top: 199px; width: 126px; height: 100px;"
-                    data-next-screen="sendmoney-screen">
+                <!-- Define clickable areas for home screen (now using responsive percentages) -->
+                <div class="clickable-area" id="to-mobile-button" data-next-screen="sendmoney-screen">
                 </div>
 
-                <div class="feedback" id="home-feedback" style="left: 50px; top: 400px;">
+                <div class="feedback" id="home-feedback">
                     Good job! Now you'll see the Send Money screen.
                 </div>
             </div>
@@ -41,16 +146,13 @@
                 <img src="../images/send-money-phonepe/send-money.png" alt="PhonePe Send Money Screen" class="screenshot">
 
                 <!-- Define clickable areas for send money screen -->
-                <div class="clickable-area" id="back-to-home" style="left: 5px; top: 10px; width: 40px; height: 40px;"
-                    data-next-screen="home-screen">
+                <div class="clickable-area" id="back-to-home" data-next-screen="home-screen">
                 </div>
 
-                <div class="clickable-area" id="new-payment"
-                    style="left: 180px; top: 585px; width: 130px; height: 60px;"
-                    data-next-screen="selectcontact-screen">
+                <div class="clickable-area" id="new-payment" data-next-screen="selectcontact-screen">
                 </div>
 
-                <div class="feedback" id="sendmoney-feedback" style="left: 50px; top: 400px;">
+                <div class="feedback" id="sendmoney-feedback">
                     Perfect! You've selected New Payment. Now you'll see contact numbers.
                 </div>
             </div>
@@ -60,15 +162,13 @@
                 <img src="../images/send-money-phonepe/select-contact.png" alt="PhonePe Select Contact Screen"
                     class="screenshot">
 
-                <div class="clickable-area" id="back-to-sendmoney"
-                    style="left: 5px; top: 10px; width: 40px; height: 40px;" data-next-screen="sendmoney-screen">
+                <div class="clickable-area" id="back-to-sendmoney" data-next-screen="sendmoney-screen">
                 </div>
 
-                <div class="clickable-area" id="search-contact"
-                    style="left: 5px; top: 50px; width: 310px; height: 60px;" data-next-screen="searchcontact-screen">
+                <div class="clickable-area" id="search-contact" data-next-screen="searchcontact-screen">
                 </div>
 
-                <div class="feedback" id="selectcontact-feedback" style="left: 50px; top: 400px;">
+                <div class="feedback" id="selectcontact-feedback">
                     Great! You've selected to enter the contact number.
                 </div>
             </div>
@@ -78,15 +178,13 @@
                 <img src="../images/send-money-phonepe/search-contact.png" alt="PhonePe Search Contact Screen"
                     class="screenshot">
 
-                <div class="clickable-area" id="selectcontact-screen"
-                    style="left: 5px; top: 10px; width: 40px; height: 40px;" data-next-screen="sendmoney-screen">
+                <div class="clickable-area" id="selectcontact-screen" data-next-screen="sendmoney-screen">
                 </div>
 
-                <div class="clickable-area" id="tap-to-select" style="left: 5px; top: 81px; width: 310px; height: 60px;"
-                    data-next-screen="pay-screen">
+                <div class="clickable-area" id="tap-to-select" data-next-screen="pay-screen">
                 </div>
 
-                <div class="feedback" id="searchcontact-feedback" style="left: 50px; top: 400px;">
+                <div class="feedback" id="searchcontact-feedback">
                     Great! You've selected the contact number to make a new payment.
                 </div>
             </div>
@@ -96,15 +194,13 @@
                 <img src="../images/send-money-phonepe/pay.png" alt="PhonePe Pay Screen"
                     class="screenshot">
 
-                <div class="clickable-area" id="searchcontact-button"
-                    style="left: 5px; top: 10px; width: 40px; height: 40px;" data-next-screen="searchcontact-screen">
+                <div class="clickable-area" id="searchcontact-button" data-next-screen="searchcontact-screen">
                 </div>
 
-                <div class="clickable-area" id="pay" style="left: 250px; top: 385px; width: 65px; height: 60px;"
-                    data-next-screen="completion-screen">
+                <div class="clickable-area" id="pay" data-next-screen="completion-screen">
                 </div>
 
-                <div class="feedback" id="pay-feedback" style="left: 50px; top: 400px;">
+                <div class="feedback" id="pay-feedback">
                     Awesome! Post this, just enter UPI PIN to complete the payment.
                 </div>
             </div>
@@ -274,6 +370,10 @@
                     targetScreen = 'home-screen';
                 } else if (tutorial.currentStep === 2) {
                     targetScreen = 'sendmoney-screen';
+                } else if (tutorial.currentStep === 3) {
+                    targetScreen = 'selectcontact-screen';
+                } else if (tutorial.currentStep === 4) {
+                    targetScreen = 'searchcontact-screen';
                 }
 
                 transitionToScreen(targetScreen);
