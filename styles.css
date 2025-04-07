@@ -73,14 +73,14 @@ h2 {
     background-color: white;
     border-radius: 10px;
     overflow: hidden;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
     transition: transform 0.3s, box-shadow 0.3s;
     cursor: pointer;
 }
 
 .tutorial-card:hover {
     transform: translateY(-5px);
-    box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
 }
 
 .card-link {
@@ -159,7 +159,7 @@ h2 {
     border: 12px solid #333;
     border-radius: 36px;
     overflow: hidden;
-    box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
     background-color: white;
     margin-bottom: 30px;
 }
@@ -188,8 +188,10 @@ h2 {
 
 .clickable-area {
     position: absolute;
-    background-color: rgba(95, 37, 159, 0); /* Transparent initially */
-    border: 2px solid rgba(95, 37, 159, 0); /* Transparent initially */
+    background-color: rgba(95, 37, 159, 0);
+    /* Transparent initially */
+    border: 2px solid rgba(95, 37, 159, 0);
+    /* Transparent initially */
     cursor: pointer;
     z-index: 10;
     transition: all 0.3s ease;
@@ -218,7 +220,7 @@ h2 {
     font-size: 16px;
     max-width: 250px;
     text-align: center;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
     z-index: 20;
     opacity: 0;
     transition: opacity 0.5s ease;
@@ -320,9 +322,11 @@ button:disabled {
     0% {
         box-shadow: 0 0 0 0 rgba(95, 37, 159, 0.7);
     }
+
     70% {
         box-shadow: 0 0 0 10px rgba(95, 37, 159, 0);
     }
+
     100% {
         box-shadow: 0 0 0 0 rgba(95, 37, 159, 0);
     }
@@ -340,14 +344,49 @@ button:disabled {
         width: 300px;
         height: 600px;
     }
-    
+
     .instructions {
         font-size: 16px;
         padding: 15px;
     }
-    
+
     button {
         padding: 10px 20px;
         font-size: 14px;
+    }
+}
+
+.language-selector {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    z-index: 100;
+}
+
+.language-selector select {
+    padding: 8px 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    background-color: white;
+    font-size: 14px;
+    color: #333;
+    cursor: pointer;
+}
+
+/* RTL language support */
+[dir="rtl"] .about-link svg {
+    margin-right: 0;
+    margin-left: 5px;
+}
+
+/* Responsive adjustment to single column on very small screens */
+@media (max-width: 600px) {
+    .tutorial-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .language-selector {
+        top: 10px;
+        right: 10px;
     }
 }

@@ -4,78 +4,83 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PhonePe Money Transfer Tutorial - Teach your parents smartphone</title>
+    <title data-i18n="page.title">PhonePe Money Transfer Tutorial - Teach your parents smartphone</title>
     <link rel="stylesheet" href="../styles.css">
     <style>
         .clickable-area {
             position: absolute;
-            background-color: rgba(95, 37, 159, 0); /* Transparent initially */
-            border: 2px solid rgba(95, 37, 159, 0); /* Transparent initially */
+            background-color: rgba(95, 37, 159, 0);
+            /* Transparent initially */
+            border: 2px solid rgba(95, 37, 159, 0);
+            /* Transparent initially */
             cursor: pointer;
             z-index: 10;
             transition: all 0.3s ease;
         }
-        
+
         .debug-mode .clickable-area {
             background-color: rgba(95, 37, 159, 0.2);
             border: 2px dashed #5f259f;
         }
-        
+
         #to-mobile-button {
-            top: 31%;   /* Approximately 199px / 640px */
-            width: 39%;  /* Approximately 126px / 320px */
-            height: 15.6%;  /* Approximately 100px / 640px */
+            top: 31%;
+            /* Approximately 199px / 640px */
+            width: 39%;
+            /* Approximately 126px / 320px */
+            height: 15.6%;
+            /* Approximately 100px / 640px */
         }
-        
+
         #back-to-home {
             left: 1.5%;
             top: 1.5%;
             width: 12.5%;
             height: 6.25%;
         }
-        
+
         #new-payment {
             left: 56%;
             top: 89%;
             width: 43%;
             height: 9.4%;
         }
-        
+
         #back-to-sendmoney {
             left: 1.5%;
             top: 1.5%;
             width: 12.5%;
             height: 6.25%;
         }
-        
+
         #search-contact {
             left: 1.5%;
             top: 7.8%;
             width: 97%;
             height: 9.4%;
         }
-        
+
         #tap-to-select {
             left: 1.5%;
             top: 12.6%;
             width: 97%;
             height: 9.4%;
         }
-        
+
         #searchcontact-button {
             left: 1.5%;
             top: 1.5%;
             width: 12.5%;
             height: 6.25%;
         }
-        
+
         #pay {
             left: 78%;
             top: 60%;
             width: 20%;
             height: 9.4%;
         }
-        
+
         .feedback {
             position: absolute;
             background-color: var(--success);
@@ -84,34 +89,35 @@
             border-radius: 10px;
             font-size: 16px;
             width: 70%;
-            left: 15%; /* Center horizontally */
+            left: 15%;
+            /* Center horizontally */
             text-align: center;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
             z-index: 20;
             opacity: 0;
             transition: opacity 0.5s ease;
         }
-        
+
         #home-feedback {
             top: 50%;
         }
-        
+
         #sendmoney-feedback {
             top: 50%;
         }
-        
+
         #selectcontact-feedback {
             top: 50%;
         }
-        
+
         #searchcontact-feedback {
             top: 50%;
         }
-        
+
         #pay-feedback {
             top: 50%;
         }
-        
+
         .step-instructions {
             background-color: #f8f0ff;
             border-left: 5px solid #5f259f;
@@ -123,7 +129,7 @@
             font-size: 16px;
             line-height: 1.5;
         }
-        
+
         .step-instructions strong {
             color: #5f259f;
         }
@@ -132,13 +138,14 @@
 
 <body>
     <div class="container">
-        <h1>Sending Money on PhonePe</h1>
-        
+        <h1 data-i18n="tutorial.title">Sending Money on PhonePe</h1>
+
         <!-- Step instructions section -->
-        <div class="step-instructions" id="step-instructions">
-            <strong>Step 1:</strong> This is the PhonePe home screen. To send money to someone, tap on the "To mobile number" option under Money Transfers. This lets you send money to any phone number in India.
+        <div class="step-instructions" id="step-instructions" data-i18n="step1.instruction">
+            <strong>Step 1:</strong> This is the PhonePe home screen. To send money to someone, tap on the "To mobile
+            number" option under Money Transfers. This lets you send money to any phone number in India.
         </div>
-        
+
         <div class="progress-indicator">
             <div class="progress-dot active" data-step="1"></div>
             <div class="progress-dot" data-step="2"></div>
@@ -151,13 +158,14 @@
             <!-- Home Screen -->
             <div class="screen" id="home-screen">
                 <!-- Home screen image -->
-                <img src="../images/send-money-phonepe/home.png" alt="PhonePe Home Screen" class="screenshot">
+                <img src="../images/send-money-phonepe/home.png" alt="PhonePe Home Screen"
+                    class="screenshot language-image" data-img-base="../images/send-money-phonepe/home">
 
                 <!-- Define clickable areas for home screen (now using responsive percentages) -->
                 <div class="clickable-area" id="to-mobile-button" data-next-screen="sendmoney-screen">
                 </div>
 
-                <div class="feedback" id="home-feedback">
+                <div class="feedback" id="home-feedback" data-i18n="feedback.home">
                     Good job! Now you'll see the Send Money screen.
                 </div>
             </div>
@@ -165,7 +173,8 @@
             <!-- Send Money Screen -->
             <div class="screen hidden" id="sendmoney-screen">
                 <!-- Send money screen image -->
-                <img src="../images/send-money-phonepe/send-money.png" alt="PhonePe Send Money Screen" class="screenshot">
+                <img src="../images/send-money-phonepe/send-money.png" alt="PhonePe Send Money Screen"
+                    class="screenshot language-image" data-img-base="../images/send-money-phonepe/send-money">
 
                 <!-- Define clickable areas for send money screen -->
                 <div class="clickable-area" id="back-to-home" data-next-screen="home-screen">
@@ -174,7 +183,7 @@
                 <div class="clickable-area" id="new-payment" data-next-screen="selectcontact-screen">
                 </div>
 
-                <div class="feedback" id="sendmoney-feedback">
+                <div class="feedback" id="sendmoney-feedback" data-i18n="feedback.sendmoney">
                     Perfect! You've selected New Payment. Now you'll see contact numbers.
                 </div>
             </div>
@@ -182,7 +191,7 @@
             <!-- Select Contact Screen -->
             <div class="screen hidden" id="selectcontact-screen">
                 <img src="../images/send-money-phonepe/select-contact.png" alt="PhonePe Select Contact Screen"
-                    class="screenshot">
+                    class="screenshot language-image" data-img-base="../images/send-money-phonepe/select-contact">
 
                 <div class="clickable-area" id="back-to-sendmoney" data-next-screen="sendmoney-screen">
                 </div>
@@ -190,7 +199,7 @@
                 <div class="clickable-area" id="search-contact" data-next-screen="searchcontact-screen">
                 </div>
 
-                <div class="feedback" id="selectcontact-feedback">
+                <div class="feedback" id="selectcontact-feedback" data-i18n="feedback.selectcontact">
                     Great! You've selected to enter the contact number.
                 </div>
             </div>
@@ -198,7 +207,7 @@
             <!-- Search Contact Screen -->
             <div class="screen hidden" id="searchcontact-screen">
                 <img src="../images/send-money-phonepe/search-contact.png" alt="PhonePe Search Contact Screen"
-                    class="screenshot">
+                    class="screenshot language-image" data-img-base="../images/send-money-phonepe/search-contact">
 
                 <div class="clickable-area" id="selectcontact-screen" data-next-screen="sendmoney-screen">
                 </div>
@@ -206,7 +215,7 @@
                 <div class="clickable-area" id="tap-to-select" data-next-screen="pay-screen">
                 </div>
 
-                <div class="feedback" id="searchcontact-feedback">
+                <div class="feedback" id="searchcontact-feedback" data-i18n="feedback.searchcontact">
                     Great! You've selected the contact number to make a new payment.
                 </div>
             </div>
@@ -214,7 +223,7 @@
             <!-- Pay Screen -->
             <div class="screen hidden" id="pay-screen">
                 <img src="../images/send-money-phonepe/pay.png" alt="PhonePe Pay Screen"
-                    class="screenshot">
+                    class="screenshot language-image" data-img-base="../images/send-money-phonepe/pay">
 
                 <div class="clickable-area" id="searchcontact-button" data-next-screen="searchcontact-screen">
                 </div>
@@ -222,7 +231,7 @@
                 <div class="clickable-area" id="pay" data-next-screen="completion-screen">
                 </div>
 
-                <div class="feedback" id="pay-feedback">
+                <div class="feedback" id="pay-feedback" data-i18n="feedback.pay">
                     Awesome! Post this, just enter UPI PIN to complete the payment.
                 </div>
             </div>
@@ -235,28 +244,35 @@
                         style="width: 100px; height: 100px; background-color: #4CAF50; border-radius: 50%; display: flex; justify-content: center; align-items: center; margin-bottom: 20px;">
                         <span style="color: white; font-size: 50px;">✓</span>
                     </div>
-                    <h2 style="color: #5f259f; margin-bottom: 10px;">Payment Successful!</h2>
-                    <p style="font-size: 18px; color: #666; margin-bottom: 30px;">₹1 sent to Ashish</p>
-                    <button id="reset-button">Back to Home</button>
+                    <h2 style="color: #5f259f; margin-bottom: 10px;" data-i18n="completion.success">Payment Successful!
+                    </h2>
+                    <p style="font-size: 18px; color: #666; margin-bottom: 30px;" data-i18n="completion.message">₹1 sent
+                        to Ashish</p>
+                    <button id="reset-button" data-i18n="button.back">Back to Home</button>
                 </div>
             </div>
         </div>
 
         <div class="task-complete" id="task-complete">
-            Congratulations! You've successfully learned how to send money to a mobile number using PhonePe.
+            <span data-i18n="tutorial.completion">Congratulations! You've successfully learned how to send money to a
+                mobile number using PhonePe.</span>
             <br><br>
-            <button onclick="window.location.href='/'" class="primary-button">Back to Home</button>
+            <button onclick="window.location.href='/'" class="primary-button" data-i18n="button.back">Back to
+                Home</button>
         </div>
 
         <div class="tutorial-controls">
-            <button id="prev-button" disabled>Previous Step</button>
-            <button id="hint-button">Show Hint</button>
-            <button id="reset-button">Start Over</button>
-            <button id="debug-toggle">Show Clickable Areas</button>
+            <button id="prev-button" disabled data-i18n="button.previous">Previous Step</button>
+            <button id="hint-button" data-i18n="button.hint">Show Hint</button>
+            <button id="reset-button" data-i18n="button.reset">Start Over</button>
+            <button id="debug-toggle" data-i18n="button.debug">Show Clickable Areas</button>
         </div>
 
-        <a href="/" class="back-link">← Back to Home</a>
+        <a href="/" class="back-link">← <span data-i18n="button.back">Back to Home</span></a>
     </div>
+
+    <!-- Load the localization script -->
+    <script src="../js/localization.js"></script>
 
     <script>
         // Tutorial state
@@ -273,11 +289,7 @@
                 'amount-screen': 'send-again-button'
             },
             instructions: {
-                1: "<strong>Step 1:</strong> This is the PhonePe home screen. To send money to someone, tap on the \"To mobile number\" option under Money Transfers. This lets you send money to any phone number in India.",
-                2: "<strong>Step 2:</strong> You're now in the Send Money screen. Here you can see your recent payments. To make a new payment, tap on the purple \"New Payment\" button at the bottom of your screen.",
-                3: "<strong>Step 3:</strong> Now you can select a contact. Tap on the search box at the top to enter a phone number or search for a contact.",
-                4: "<strong>Step 4:</strong> Type the phone number or select a contact from the list. Tap on the contact you want to send money to.",
-                5: "<strong>Step 5:</strong> Now enter the amount you want to send. Then tap \"Pay\" to proceed. After this, you'll need to enter your UPI PIN to complete the transaction."
+                // Instructions will be loaded from translation files
             }
         };
 
@@ -300,9 +312,21 @@
         hintButton.addEventListener('click', showHint);
         resetButton.addEventListener('click', resetTutorial);
         debugToggle.addEventListener('click', toggleDebugMode);
-        
+
         function updateInstructions() {
-            instructionsElement.innerHTML = tutorial.instructions[tutorial.currentStep];
+            // Get translation key for current step
+            const key = `step${tutorial.currentStep}.instruction`;
+
+            // Get translated instruction from the i18n system
+            const translations = window.localization?.getTranslations() || {};
+            const translatedInstruction = translations[key];
+
+            if (translatedInstruction) {
+                instructionsElement.innerHTML = translatedInstruction;
+            } else {
+                // Fallback - get the data-i18n attribute's original content
+                instructionsElement.setAttribute('data-i18n', key);
+            }
         }
 
         // Update the progress indicator
@@ -432,9 +456,18 @@
             const elementToHighlight = document.getElementById(expectedAction);
             if (elementToHighlight) {
                 elementToHighlight.classList.add('highlight');
-                
-                // Make the instruction more prominent as a hint
-                instructionsElement.innerHTML = "<strong>HINT:</strong> " + tutorial.instructions[tutorial.currentStep];
+
+                // Get translated instruction with HINT prefix
+                const key = `step${tutorial.currentStep}.instruction`;
+                const translations = window.localization?.getTranslations() || {};
+                const translatedInstruction = translations[key];
+
+                if (translatedInstruction) {
+                    instructionsElement.innerHTML = "<strong>HINT:</strong> " + translatedInstruction.replace(/<strong>.*?<\/strong>/, '');
+                } else {
+                    // Fallback
+                    instructionsElement.innerHTML = "<strong>HINT:</strong> " + instructionsElement.innerHTML.replace(/<strong>.*?<\/strong>/, '');
+                }
             }
         }
 
@@ -455,9 +488,9 @@
         function toggleDebugMode() {
             phoneContainer.classList.toggle('debug-mode');
             if (phoneContainer.classList.contains('debug-mode')) {
-                debugToggle.textContent = 'Hide Clickable Areas';
+                debugToggle.textContent = window.localization?.getTranslations()?.['button.hideDebug'] || 'Hide Clickable Areas';
             } else {
-                debugToggle.textContent = 'Show Clickable Areas';
+                debugToggle.textContent = window.localization?.getTranslations()?.['button.debug'] || 'Show Clickable Areas';
             }
         }
 
@@ -466,10 +499,43 @@
             prevButton.disabled = tutorial.currentStep === 1;
         }
 
+        // Load tutorial instructions based on selected language
+        function loadTutorialInstructions() {
+            // Automatically handled by the localization.js script
+            // which will translate all elements with data-i18n attributes
+
+            // Set instructions for each step
+            for (let i = 1; i <= tutorial.totalSteps; i++) {
+                const key = `step${i}.instruction`;
+                tutorial.instructions[i] = window.localization?.getTranslations()?.[key] ||
+                    document.querySelector(`[data-i18n="${key}"]`)?.innerHTML || '';
+            }
+
+            // Update current instruction
+            updateInstructions();
+        }
+
         // Initialize the tutorial
         function initTutorial() {
             updateProgress();
-            updateInstructions();
+
+            // Check if localization script is loaded
+            if (window.localization) {
+                // Add callback for language changes
+                const originalChangeLanguage = window.localization.changeLanguage;
+                window.localization.changeLanguage = function (lang) {
+                    originalChangeLanguage(lang);
+                    // After language change, update tutorial content
+                    loadTutorialInstructions();
+                };
+
+                // Initialize translations
+                window.localization.getTranslations = function () {
+                    return window.translationCache?.[`${window.localization.getCurrentLanguage()}_phonepe`] || {};
+                };
+            }
+
+            loadTutorialInstructions();
             updateButtonStates();
         }
 

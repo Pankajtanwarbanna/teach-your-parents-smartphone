@@ -4,8 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Teach your parents smartphone - Simple App Learning Guide</title>
-    <meta name="description"
+    <title data-i18n="page.title">Teach your parents smartphone - Simple App Learning Guide</title>
+    <meta name="description" data-i18n-attr="content=meta.description"
         content="Easy step-by-step practice guide to help parents and seniors learn essential smartphone apps like PhonePe, WhatsApp, Google Maps, and more.">
     <meta name="keywords"
         content="smartphone tutorial, app learning, senior tech help, parent tech support, phonepe tutorial, whatsapp tutorial, digital literacy, mobile guide">
@@ -96,18 +96,12 @@
             text-decoration: underline;
         }
 
-        /* Responsive adjustment to single column on very small screens */
-        @media (max-width: 600px) {
-            .tutorial-grid {
-                grid-template-columns: 1fr;
-            }
-        }
     </style>
 </head>
 
 <body>
     <div class="container">
-        <h1>Teach your parents smartphone</h1>
+        <h1 data-i18n="home.title">Teach your parents smartphone</h1>
 
         <!-- New About link with angled arrow -->
         <a href="about.html" class="about-link">
@@ -115,11 +109,12 @@
                 stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                 <path d="M7 17l9.2-9.2M7 7h10v10"></path>
             </svg>
-            Why I built this?
+            <span data-i18n="home.why">Why I built this?</span>
         </a>
 
         <div class="welcome-container">
-            <p class="welcome-subheading">Learn how to use popular apps with step-by-step practice guide.</p>
+            <p class="welcome-subheading" data-i18n="home.subheading">Learn how to use popular apps with step-by-step
+                practice guide.</p>
 
             <div class="tutorial-grid">
                 <!-- Money & Payments -->
@@ -129,10 +124,11 @@
                             <div class="app-icon" style="background-color: #5f259f;">💸</div>
                         </div>
                         <div class="card-content">
-                            <div class="card-title">Send Money on PhonePe</div>
-                            <p class="card-description">Learn how to send money to a mobile number using PhonePe app.
+                            <div class="card-title" data-i18n="card.phonepe.title">Send Money on PhonePe</div>
+                            <p class="card-description" data-i18n="card.phonepe.description">Learn how to send money to
+                                a mobile number using PhonePe app.
                             </p>
-                            <button class="card-button">Start Tutorial</button>
+                            <button class="card-button" data-i18n="button.startTutorial">Start Tutorial</button>
                         </div>
                     </a>
                 </div>
@@ -144,9 +140,11 @@
                             <div class="app-icon" style="background-color: #25D366;">📱</div>
                         </div>
                         <div class="card-content">
-                            <div class="card-title">Use WhatsApp Video Call</div>
-                            <p class="card-description">Learn how to make video calls to family and friends.</p>
-                            <button class="card-button" style="background-color: #25D366;">Start Tutorial</button>
+                            <div class="card-title" data-i18n="card.whatsapp.title">Use WhatsApp Video Call</div>
+                            <p class="card-description" data-i18n="card.whatsapp.description">Learn how to make video
+                                calls to family and friends.</p>
+                            <button class="card-button" style="background-color: #25D366;"
+                                data-i18n="button.startTutorial">Start Tutorial</button>
                         </div>
                     </a>
                 </div>
@@ -157,9 +155,11 @@
                         <div class="app-icon" style="background-color: #5f259f;">⚡</div>
                     </div>
                     <div class="card-content">
-                        <div class="card-title">Pay Electricity Bill</div>
-                        <p class="card-description">Learn how to pay your electricity bill using PhonePe or BBPS.</p>
-                        <button class="card-button" disabled style="background-color: #ccc;">Coming Soon</button>
+                        <div class="card-title" data-i18n="card.electricity.title">Pay Electricity Bill</div>
+                        <p class="card-description" data-i18n="card.electricity.description">Learn how to pay your
+                            electricity bill using PhonePe or BBPS.</p>
+                        <button class="card-button" disabled style="background-color: #ccc;"
+                            data-i18n="button.comingSoon">Coming Soon</button>
                     </div>
                 </div>
 
@@ -169,9 +169,11 @@
                         <div class="app-icon" style="background-color: #0088cc;">🚕</div>
                     </div>
                     <div class="card-content">
-                        <div class="card-title">Book an Ola/Uber Ride</div>
-                        <p class="card-description">Learn how to book a cab and track your driver.</p>
-                        <button class="card-button" disabled style="background-color: #ccc;">Coming Soon</button>
+                        <div class="card-title" data-i18n="card.ride.title">Book an Ola/Uber Ride</div>
+                        <p class="card-description" data-i18n="card.ride.description">Learn how to book a cab and track
+                            your driver.</p>
+                        <button class="card-button" disabled style="background-color: #ccc;"
+                            data-i18n="button.comingSoon">Coming Soon</button>
                     </div>
                 </div>
 
@@ -181,9 +183,11 @@
                         <div class="app-icon" style="background-color: #4285F4;">🗺️</div>
                     </div>
                     <div class="card-content">
-                        <div class="card-title">Navigate with Google Maps</div>
-                        <p class="card-description">Learn how to find directions and navigate to new places.</p>
-                        <button class="card-button" disabled style="background-color: #ccc;">Coming Soon</button>
+                        <div class="card-title" data-i18n="card.maps.title">Navigate with Google Maps</div>
+                        <p class="card-description" data-i18n="card.maps.description">Learn how to find directions and
+                            navigate to new places.</p>
+                        <button class="card-button" disabled style="background-color: #ccc;"
+                            data-i18n="button.comingSoon">Coming Soon</button>
                     </div>
                 </div>
 
@@ -193,9 +197,11 @@
                         <div class="app-icon" style="background-color: #0D47A1;">🚂</div>
                     </div>
                     <div class="card-content">
-                        <div class="card-title">Book Train Tickets</div>
-                        <p class="card-description">Learn how to book train tickets using the IRCTC app.</p>
-                        <button class="card-button" disabled style="background-color: #ccc;">Coming Soon</button>
+                        <div class="card-title" data-i18n="card.train.title">Book Train Tickets</div>
+                        <p class="card-description" data-i18n="card.train.description">Learn how to book train tickets
+                            using the IRCTC app.</p>
+                        <button class="card-button" disabled style="background-color: #ccc;"
+                            data-i18n="button.comingSoon">Coming Soon</button>
                     </div>
                 </div>
             </div>
@@ -203,14 +209,18 @@
 
         <footer class="footer">
             <div>
-                Built with ❤️ by <a href="https://twitter.com/the2ndfloorguy" target="_blank">Pankaj Tanwar</a>
+                <span data-i18n="footer.built">Built with ❤️ by</span> <a href="https://twitter.com/the2ndfloorguy"
+                    target="_blank">Pankaj Tanwar</a>
             </div>
             <div class="nav-links">
-                <a href="about.html">About This Project</a>
-                <a href="https://github.com/pankajtanwarbanna/teach-your-parents-smartphone" target="_blank">GitHub</a>
+                <a href="about.html" data-i18n="footer.about">About This Project</a>
+                <a href="https://github.com/pankajtanwarbanna/teach-your-parents-smartphone" target="_blank"
+                    data-i18n="footer.github">GitHub</a>
             </div>
         </footer>
     </div>
+
+    <script src="./js/localization.js"></script>
 </body>
 
 </html>

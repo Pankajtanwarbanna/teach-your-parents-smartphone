@@ -4,48 +4,51 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>WhatsApp Video Call Tutorial - Teach your parents smartphone</title>
+    <title data-i18n="page.title">WhatsApp Video Call Tutorial - Teach your parents smartphone</title>
     <link rel="stylesheet" href="../styles.css">
     <style>
         .clickable-area {
             position: absolute;
-            background-color: rgba(95, 37, 159, 0); /* Transparent initially */
-            border: 2px solid rgba(95, 37, 159, 0); /* Transparent initially */
+            background-color: rgba(95, 37, 159, 0);
+            /* Transparent initially */
+            border: 2px solid rgba(95, 37, 159, 0);
+            /* Transparent initially */
             cursor: pointer;
             z-index: 10;
             transition: all 0.3s ease;
         }
-        
+
         .debug-mode .clickable-area {
             background-color: rgba(95, 37, 159, 0.2);
             border: 2px dashed #5f259f;
         }
-        
+
         #select-contact {
             left: 1.5%;
             top: 35%;
             width: 97%;
             height: 11%;
         }
-        
+
         #back-to-home {
             left: 1.5%;
             top: 1.5%;
             width: 12.5%;
             height: 6.25%;
         }
-        
+
         #video-call-button {
-            right: 18.75%;  /* 60px / 320px */
+            right: 18.75%;
+            /* 60px / 320px */
             top: 1.5%;
             width: 12.5%;
             height: 6.25%;
         }
-        
+
         #end-call-button {
             position: relative !important;
         }
-        
+
         .step-instructions {
             background-color: #e7f7e8;
             border-left: 5px solid #25D366;
@@ -57,11 +60,11 @@
             font-size: 16px;
             line-height: 1.5;
         }
-        
+
         .step-instructions strong {
             color: #075E54;
         }
-        
+
         /* Make feedback messages responsive */
         .feedback {
             position: absolute;
@@ -71,27 +74,28 @@
             border-radius: 10px;
             font-size: 16px;
             width: 70%;
-            left: 15%; /* Center horizontally */
+            left: 15%;
+            /* Center horizontally */
             text-align: center;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
             z-index: 20;
             opacity: 0;
             transition: opacity 0.5s ease;
         }
-        
+
         #home-feedback {
             top: 60%;
         }
-        
+
         #chat-feedback {
             top: 60%;
         }
-        
+
         #call-feedback {
             top: 30%;
             z-index: 100;
         }
-        
+
         .call-container {
             width: 100%;
             height: 100%;
@@ -99,7 +103,7 @@
             position: relative;
             overflow: hidden;
         }
-        
+
         .remote-video {
             width: 100%;
             height: 100%;
@@ -107,12 +111,12 @@
             align-items: center;
             justify-content: center;
         }
-        
+
         .remote-user {
             text-align: center;
             color: white;
         }
-        
+
         .avatar {
             width: 100px;
             height: 100px;
@@ -124,7 +128,7 @@
             justify-content: center;
             font-size: 40px;
         }
-        
+
         .self-preview {
             position: absolute;
             top: 5%;
@@ -139,7 +143,7 @@
             font-size: 20px;
             color: white;
         }
-        
+
         .call-controls {
             position: absolute;
             bottom: 10%;
@@ -149,7 +153,7 @@
             justify-content: center;
             gap: 10%;
         }
-        
+
         .control-button {
             width: 60px;
             height: 60px;
@@ -161,11 +165,11 @@
             font-size: 24px;
             color: white;
         }
-        
+
         .end-call {
             background-color: #FF3B30;
         }
-        
+
         .completion-container {
             height: 100%;
             display: flex;
@@ -174,7 +178,7 @@
             align-items: center;
             background-color: #f5f5f5;
         }
-        
+
         .success-icon {
             width: 100px;
             height: 100px;
@@ -185,17 +189,17 @@
             align-items: center;
             margin-bottom: 20px;
         }
-        
+
         .success-check {
             color: white;
             font-size: 50px;
         }
-        
+
         .completion-title {
             color: #075E54;
             margin-bottom: 10px;
         }
-        
+
         .completion-message {
             font-size: 18px;
             color: #666;
@@ -203,7 +207,7 @@
             text-align: center;
             padding: 0 20px;
         }
-        
+
         .try-again-button {
             padding: 12px 30px;
             background-color: #075E54;
@@ -213,7 +217,7 @@
             font-size: 16px;
             cursor: pointer;
         }
-        
+
         .try-again-button:hover {
             background-color: #064a42;
         }
@@ -222,28 +226,30 @@
 
 <body>
     <div class="container">
-        <h1>Making a Video Call on WhatsApp</h1>
+        <h1 data-i18n="tutorial.title">Making a Video Call on WhatsApp</h1>
         <div class="progress-indicator">
             <div class="progress-dot active" data-step="1"></div>
             <div class="progress-dot" data-step="2"></div>
             <div class="progress-dot" data-step="3"></div>
         </div>
-        
+
         <!-- Step instructions will be updated dynamically -->
-        <div class="step-instructions" id="step-instructions">
-            <strong>Step 1:</strong> This is your WhatsApp chats list. All your conversations appear here. To make a video call, first tap on the contact you want to call. In this example, tap on "Random Aunty".
+        <div class="step-instructions" id="step-instructions" data-i18n="step1.instruction">
+            <strong>Step 1:</strong> This is your WhatsApp chats list. All your conversations appear here. To make a
+            video call, first tap on the contact you want to call. In this example, tap on "Random Aunty".
         </div>
 
         <div class="phone-container" id="phone-container">
             <!-- Home Screen - Contacts List -->
             <div class="screen" id="home-screen">
                 <!-- Home screen image - your WhatsApp contacts screen -->
-                <img src="../images/video-call-whatsapp/home.png" alt="WhatsApp Contacts Screen" class="screenshot">
+                <img src="../images/video-call-whatsapp/home.png" alt="WhatsApp Contacts Screen"
+                    class="screenshot language-image" data-img-base="../images/video-call-whatsapp/home">
 
                 <!-- Define clickable areas for home screen with responsive positioning -->
                 <div class="clickable-area" id="select-contact" data-next-screen="chat-screen"></div>
 
-                <div class="feedback" id="home-feedback">
+                <div class="feedback" id="home-feedback" data-i18n="feedback.home">
                     Good job! Now you'll see the chat screen for this contact.
                 </div>
             </div>
@@ -251,13 +257,14 @@
             <!-- Chat Screen - Individual chat with video call icon -->
             <div class="screen hidden" id="chat-screen">
                 <!-- Chat screen image - individual chat with video call icon -->
-                <img src="../images/video-call-whatsapp/chat.png" alt="WhatsApp Chat Screen" class="screenshot">
+                <img src="../images/video-call-whatsapp/chat.png" alt="WhatsApp Chat Screen"
+                    class="screenshot language-image" data-img-base="../images/video-call-whatsapp/chat">
 
                 <!-- Define clickable areas with responsive positioning -->
                 <div class="clickable-area" id="back-to-home" data-next-screen="home-screen"></div>
                 <div class="clickable-area" id="video-call-button" data-next-screen="call-screen"></div>
 
-                <div class="feedback" id="chat-feedback">
+                <div class="feedback" id="chat-feedback" data-i18n="feedback.chat">
                     Perfect! You've clicked the video call button. Your call is connecting.
                 </div>
             </div>
@@ -274,19 +281,20 @@
                             <p style="font-size: 14px; opacity: 0.7;">Call connected</p>
                         </div>
                     </div>
-                    
+
                     <!-- Self preview -->
-                    <div class="self-preview">You</div>
-                    
+                    <div class="self-preview" data-i18n="video.self">You</div>
+
                     <!-- Call controls -->
                     <div class="call-controls">
                         <div class="control-button">🔇</div>
-                        <div class="control-button end-call clickable-area" id="end-call-button" data-next-screen="completion-screen">✕</div>
+                        <div class="control-button end-call clickable-area" id="end-call-button"
+                            data-next-screen="completion-screen">✕</div>
                         <div class="control-button">🔄</div>
                     </div>
                 </div>
 
-                <div class="feedback" id="call-feedback">
+                <div class="feedback" id="call-feedback" data-i18n="feedback.call">
                     Well done! You've ended the call by pressing the red button.
                 </div>
             </div>
@@ -297,27 +305,36 @@
                     <div class="success-icon">
                         <span class="success-check">✓</span>
                     </div>
-                    <h2 class="completion-title">Call Completed!</h2>
-                    <p class="completion-message">You've successfully made a WhatsApp video call</p>
-                    <button class="try-again-button" onclick="resetTutorial()">Try Again</button>
+                    <h2 class="completion-title" data-i18n="completion.success">Call Completed!</h2>
+                    <p class="completion-message" data-i18n="completion.message">You've successfully made a WhatsApp
+                        video call</p>
+                    <button class="try-again-button" onclick="resetTutorial()" data-i18n="button.tryAgain">Try
+                        Again</button>
                 </div>
             </div>
         </div>
 
         <div class="task-complete" id="task-complete">
-            Congratulations! You've successfully learned how to make a video call on WhatsApp.
+            <span data-i18n="tutorial.completion">Congratulations! You've successfully learned how to make a video call
+                on WhatsApp.</span>
             <br><br>
-            <button onclick="window.location.href='/'" class="primary-button">Back to Home</button>
-            <button onclick="resetTutorial()">Try Again</button>
+            <button onclick="window.location.href='/'" class="primary-button" data-i18n="button.back">Back to
+                Home</button>
+            <button onclick="resetTutorial()" data-i18n="button.tryAgain">Try Again</button>
         </div>
 
         <div class="tutorial-controls">
-            <button id="prev-button" disabled>Previous Step</button>
-            <button id="hint-button">Show Hint</button>
-            <button id="reset-button">Start Over</button>
-            <button id="debug-toggle">Show Clickable Areas</button>
+            <button id="prev-button" disabled data-i18n="button.previous">Previous Step</button>
+            <button id="hint-button" data-i18n="button.hint">Show Hint</button>
+            <button id="reset-button" data-i18n="button.reset">Start Over</button>
+            <button id="debug-toggle" data-i18n="button.debug">Show Clickable Areas</button>
         </div>
+
+        <a href="/" class="back-link">← <span data-i18n="button.back">Back to Home</span></a>
     </div>
+
+    <!-- Load the localization script -->
+    <script src="../js/localization.js"></script>
 
     <script>
         // Tutorial state
@@ -331,9 +348,7 @@
                 'call-screen': 'end-call-button'
             },
             instructions: {
-                1: "<strong>Step 1:</strong> This is your WhatsApp chats list. All your conversations appear here. To make a video call, first tap on the contact you want to call. In this example, tap on \"Random Aunty\".",
-                2: "<strong>Step 2:</strong> Now you're in the chat screen where you can see your messages with this contact. Look at the top right corner of the screen. Tap on the video camera icon to start a video call.",
-                3: "<strong>Step 3:</strong> Your video call is now connected! You can see the other person in the main screen and yourself in the small window at the top right. When you want to end the call, tap the red button with an X in the middle at the bottom of the screen."
+                // Instructions will be loaded from translation files
             }
         };
 
@@ -356,10 +371,22 @@
         hintButton.addEventListener('click', showHint);
         resetButton.addEventListener('click', resetTutorial);
         debugToggle.addEventListener('click', toggleDebugMode);
-        
+
         // Update instructions text
         function updateInstructions() {
-            instructionsElement.innerHTML = tutorial.instructions[tutorial.currentStep];
+            // Get translation key for current step
+            const key = `step${tutorial.currentStep}.instruction`;
+
+            // Get translated instruction from the i18n system
+            const translations = window.localization?.getTranslations() || {};
+            const translatedInstruction = translations[key];
+
+            if (translatedInstruction) {
+                instructionsElement.innerHTML = translatedInstruction;
+            } else {
+                // Fallback - get the data-i18n attribute's original content
+                instructionsElement.setAttribute('data-i18n', key);
+            }
         }
 
         // Update the progress indicator
@@ -485,9 +512,18 @@
             const elementToHighlight = document.getElementById(expectedAction);
             if (elementToHighlight) {
                 elementToHighlight.classList.add('highlight');
-                
-                // Make the instruction more prominent as a hint
-                instructionsElement.innerHTML = "<strong>HINT:</strong> " + tutorial.instructions[tutorial.currentStep];
+
+                // Get translated instruction with HINT prefix
+                const key = `step${tutorial.currentStep}.instruction`;
+                const translations = window.localization?.getTranslations() || {};
+                const translatedInstruction = translations[key];
+
+                if (translatedInstruction) {
+                    instructionsElement.innerHTML = "<strong>HINT:</strong> " + translatedInstruction.replace(/<strong>.*?<\/strong>/, '');
+                } else {
+                    // Fallback
+                    instructionsElement.innerHTML = "<strong>HINT:</strong> " + instructionsElement.innerHTML.replace(/<strong>.*?<\/strong>/, '');
+                }
             }
         }
 
@@ -508,9 +544,9 @@
         function toggleDebugMode() {
             phoneContainer.classList.toggle('debug-mode');
             if (phoneContainer.classList.contains('debug-mode')) {
-                debugToggle.textContent = 'Hide Clickable Areas';
+                debugToggle.textContent = window.localization?.getTranslations()?.['button.hideDebug'] || 'Hide Clickable Areas';
             } else {
-                debugToggle.textContent = 'Show Clickable Areas';
+                debugToggle.textContent = window.localization?.getTranslations()?.['button.debug'] || 'Show Clickable Areas';
             }
         }
 
@@ -519,10 +555,43 @@
             prevButton.disabled = tutorial.currentStep === 1;
         }
 
+        // Load tutorial instructions based on selected language
+        function loadTutorialInstructions() {
+            // Automatically handled by the localization.js script
+            // which will translate all elements with data-i18n attributes
+
+            // Set instructions for each step
+            for (let i = 1; i <= tutorial.totalSteps; i++) {
+                const key = `step${i}.instruction`;
+                tutorial.instructions[i] = window.localization?.getTranslations()?.[key] ||
+                    document.querySelector(`[data-i18n="${key}"]`)?.innerHTML || '';
+            }
+
+            // Update current instruction
+            updateInstructions();
+        }
+
         // Initialize the tutorial
         function initTutorial() {
             updateProgress();
-            updateInstructions();
+
+            // Check if localization script is loaded
+            if (window.localization) {
+                // Add callback for language changes
+                const originalChangeLanguage = window.localization.changeLanguage;
+                window.localization.changeLanguage = function (lang) {
+                    originalChangeLanguage(lang);
+                    // After language change, update tutorial content
+                    loadTutorialInstructions();
+                };
+
+                // Initialize translations
+                window.localization.getTranslations = function () {
+                    return window.translationCache?.[`${window.localization.getCurrentLanguage()}_whatsapp`] || {};
+                };
+            }
+
+            loadTutorialInstructions();
             updateButtonStates();
         }
 
