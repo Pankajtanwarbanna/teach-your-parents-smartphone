@@ -96,6 +96,18 @@
             text-decoration: underline;
         }
 
+        @media (max-width: 768px) {
+            .tutorial-grid {
+                grid-template-columns: 1fr;
+                /* Show only 1 card per row on smaller screens */
+                gap: 20px;
+            }
+
+            .tutorial-card {
+                min-height: 280px;
+                /* Slightly smaller cards on mobile */
+            }
+        }
     </style>
 </head>
 

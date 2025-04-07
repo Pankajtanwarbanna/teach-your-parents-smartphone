@@ -1,6 +1,6 @@
 # Teach Your Parents Smartphone 📱
 
-A simple application with step-by-step tutorials to help parents learn essential mobile apps.
+A simple application with step-by-step practice guide to help parents learn essential mobile apps.
 
 ## Why I Created This
 
@@ -17,6 +17,7 @@ I built this so my parents can feel a little more confident, a little more indep
 ## Features
 
 - Simple, clear step-by-step instructions
+- Localization Support available in English and Hindi with easy extensibility for additional languages
 - Visual guides with highlighted clickable areas
 - Interactive Practice mode
 - Works for various essential apps (PhonePe, WhatsApp, etc.)

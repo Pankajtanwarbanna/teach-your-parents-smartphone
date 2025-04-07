@@ -1,7 +1,3 @@
-// Localization Module for Teach Your Parents Smartphone
-// Main functionality for handling language switching and text translation
-// All translations embedded directly in this file
-
 // Available languages
 const LANGUAGES = {
     en: {
@@ -17,13 +13,9 @@ const LANGUAGES = {
     // Add more languages here as needed
 };
 
-// Default language
 const DEFAULT_LANGUAGE = 'en';
-
-// Current language
 let currentLanguage = DEFAULT_LANGUAGE;
 
-// All translations embedded directly in this file
 const TRANSLATIONS = {
     // ENGLISH TRANSLATIONS
     "en": {
